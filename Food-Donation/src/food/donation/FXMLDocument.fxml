@@ -48,7 +48,7 @@
                </image>
             </ImageView>
             <Button layoutX="330.0" layoutY="425.0" mnemonicParsing="false" text="Volunteer" />
-            <Button layoutX="96.0" layoutY="425.0" mnemonicParsing="false" text="Donator" />
+            <Button fx:id="donate" layoutX="96.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Donator" />
          </children>
       </AnchorPane>
    </children>
