@@ -49,7 +49,6 @@
             </ImageView>
             <Button layoutX="330.0" layoutY="425.0" mnemonicParsing="false" text="Volunteer" />
             <Button layoutX="96.0" layoutY="425.0" mnemonicParsing="false" text="Donator" />
-            <Button layoutX="933.0" layoutY="1.0" mnemonicParsing="false" text="X" />
          </children>
       </AnchorPane>
    </children>
