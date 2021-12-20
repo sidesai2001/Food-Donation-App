@@ -38,17 +38,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="671.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="food.donation.Page1Controller">
+<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="671.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="food.donation.Page1Controller">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="671.0" fitWidth="971.0" pickOnBounds="true">
+            <ImageView fitHeight="671.0" fitWidth="977.0" pickOnBounds="true">
                <image>
-                  <Image url="@java%20ui.jpg" />
+                  <Image url="@s.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="330.0" layoutY="425.0" mnemonicParsing="false" text="Volunteer" />
-            <Button fx:id="donate" layoutX="96.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Donator" />
+            <Button layoutX="547.0" layoutY="425.0" mnemonicParsing="false" text="Volunteer" />
+            <Button fx:id="donate" layoutX="247.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Donator" />
          </children>
       </AnchorPane>
    </children>
