@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author Siddhant Desai
  */
-public class FXMLDocumentController implements Initializable {
+public class Page1Controller implements Initializable {
     
     private Stage stage;
     private Scene scene;
@@ -29,7 +29,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-       root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
+       root = FXMLLoader.load(getClass().getResource("page2.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);
        stage.setScene(scene);
