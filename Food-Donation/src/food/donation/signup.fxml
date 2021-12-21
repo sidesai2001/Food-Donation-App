@@ -20,8 +20,8 @@
                </image>
             </ImageView>
             <Button fx:id="login" layoutX="414.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#toDonateAction" prefHeight="25.0" prefWidth="149.0" text="LOGIN" />
-            <PasswordField layoutX="414.0" layoutY="362.0" promptText="Password" />
-            <TextField layoutX="414.0" layoutY="299.0" promptText="Email ID" />
+            <PasswordField layoutX="414.0" layoutY="396.0" promptText="Password" />
+            <TextField layoutX="414.0" layoutY="356.0" promptText="Email ID" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="414.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@3219840.png" />
@@ -30,6 +30,11 @@
             <Label layoutX="166.0" layoutY="41.0" text="Food donation app for NGO">
                <font>
                   <Font name="Courier New" size="43.0" />
+               </font>
+            </Label>
+            <Label layoutX="448.0" layoutY="294.0" text="LOGIN">
+               <font>
+                  <Font size="28.0" />
                </font>
             </Label>
          </children>
