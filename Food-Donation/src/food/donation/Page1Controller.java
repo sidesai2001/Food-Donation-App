@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -30,6 +31,16 @@ public class Page1Controller implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
        root = FXMLLoader.load(getClass().getResource("page2.fxml"));
+       stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+       scene = new Scene(root);
+       stage.setScene(scene);
+       stage.show();
+    }
+    
+    
+    @FXML
+    private void volunteerAction(MouseEvent event) throws IOException {
+       root = FXMLLoader.load(getClass().getResource("volunteer.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);
        stage.setScene(scene);

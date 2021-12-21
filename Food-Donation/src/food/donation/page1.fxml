@@ -47,7 +47,7 @@
                   <Image url="@java%20ui.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="340.0" layoutY="425.0" mnemonicParsing="false" text="Volunteer" />
+            <Button fx:id="volunteer" layoutX="340.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#volunteerAction" text="Volunteer" />
             <Button fx:id="donate" layoutX="92.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Donator" />
          </children>
       </AnchorPane>
