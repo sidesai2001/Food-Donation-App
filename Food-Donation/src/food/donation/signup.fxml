@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="550.0" fitWidth="995.0" layoutY="-1.0" pickOnBounds="true">
                <image>
-                  <Image url="@sa.jpg" />
+                  <Image url="@UI/sa.jpg" />
                </image>
             </ImageView>
             <Button fx:id="login" layoutX="414.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#toDonateAction" prefHeight="25.0" prefWidth="149.0" text="LOGIN" />
@@ -24,7 +24,7 @@
             <TextField layoutX="414.0" layoutY="356.0" promptText="Email ID" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="414.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@3219840.png" />
+                  <Image url="@UI/3219840.png" />
                </image>
             </ImageView>
             <Label layoutX="166.0" layoutY="41.0" text="Food donation app for NGO">
