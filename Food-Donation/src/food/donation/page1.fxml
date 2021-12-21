@@ -44,11 +44,11 @@
          <children>
             <ImageView fitHeight="671.0" fitWidth="977.0" pickOnBounds="true">
                <image>
-                  <Image url="@s.jpg" />
+                  <Image url="@java%20ui.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="547.0" layoutY="425.0" mnemonicParsing="false" text="Volunteer" />
-            <Button fx:id="donate" layoutX="247.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Donator" />
+            <Button layoutX="340.0" layoutY="425.0" mnemonicParsing="false" text="Volunteer" />
+            <Button fx:id="donate" layoutX="92.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Donator" />
          </children>
       </AnchorPane>
    </children>
