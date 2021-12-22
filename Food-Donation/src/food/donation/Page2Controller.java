@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -31,6 +32,7 @@ public class Page2Controller implements Initializable {
     private Scene scene;
     private Parent root;
     
+    
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException {
        root = FXMLLoader.load(getClass().getResource("page1.fxml"));
@@ -38,6 +40,11 @@ public class Page2Controller implements Initializable {
        scene = new Scene(root);
        stage.setScene(scene);
        stage.show();
+    }
+    
+    @FXML
+    private void fooddetailsAction(MouseEvent event) throws IOException {
+        //TableView.visible(true);            
     }
     
     @Override
