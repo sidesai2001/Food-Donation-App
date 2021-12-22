@@ -16,34 +16,34 @@
          <children>
             <ImageView fitHeight="679.0" fitWidth="977.0" layoutY="-7.0" pickOnBounds="true">
                <image>
-                  <Image url="@UI/23.jpg" />
+                  <Image url="@A/v.png" />
                </image>
             </ImageView>
-            <Label layoutX="118.0" layoutY="49.0" text="Name:">
+            <Label layoutX="489.0" layoutY="155.0" text="Name:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField layoutX="118.0" layoutY="74.0" prefHeight="33.0" prefWidth="235.0" />
-            <TextArea layoutX="118.0" layoutY="263.0" prefHeight="81.0" prefWidth="235.0" />
-            <TextField layoutX="118.0" layoutY="167.0" prefHeight="33.0" prefWidth="235.0" />
-            <Label layoutX="118.0" layoutY="136.0" text="Phone No.:">
+            <TextField layoutX="500.0" layoutY="200.0" prefHeight="33.0" prefWidth="235.0" />
+            <TextArea layoutX="500.0" layoutY="425.0" prefHeight="123.0" prefWidth="397.0" />
+            <TextField layoutX="500.0" layoutY="316.0" prefHeight="33.0" prefWidth="235.0" />
+            <Label layoutX="489.0" layoutY="272.0" text="Phone No.:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="229.0" text="Address:">
+            <Label layoutX="489.0" layoutY="388.0" text="Address:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="submit" layoutX="196.0" layoutY="400.0" mnemonicParsing="false" text="SUBMIT" />
+            <Button fx:id="submit" layoutX="677.0" layoutY="603.0" mnemonicParsing="false" text="SUBMIT" />
             <Label layoutX="555.0" layoutY="34.0" prefHeight="81.0" prefWidth="324.0" text="Volunteer">
                <font>
                   <Font name="Calibri" size="56.0" />
                </font>
             </Label>
-            <Button fx:id="back" layoutX="9.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#backbuttonAction" text="Back" />
+            <Button fx:id="back" layoutX="924.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#backbuttonAction" text="Back" />
          </children>
       </AnchorPane>
    </children>

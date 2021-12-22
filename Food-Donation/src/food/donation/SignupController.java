@@ -8,15 +8,16 @@ package food.donation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javax.xml.validation.Validator;
 
 /**
  * FXML Controller class
@@ -28,11 +29,12 @@ public class SignupController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-    
+    private TextField emailid;
     private Stage stage;
     private Scene scene;
     private Parent root;
+    
+    //ValidationSupport validationSupport = new ValidationSupport();
     
     @FXML
     private void toDonateAction(MouseEvent event) throws IOException {
@@ -43,14 +45,10 @@ public class SignupController implements Initializable {
        stage.show();
     }
     
-    
-    
-    
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //validationSupport.registerValidator(emailid, Validator.createEmptyV alidator("Enter email Id"));
     }    
     
 }

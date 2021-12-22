@@ -44,12 +44,12 @@
          <children>
             <ImageView fitHeight="671.0" fitWidth="977.0" pickOnBounds="true">
                <image>
-                  <Image url="@UI/33.jpg" />
+                  <Image url="@A/m.png" />
                </image>
             </ImageView>
-            <Button fx:id="volunteer" layoutX="581.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#volunteerAction" text="Volunteer" />
-            <Button fx:id="donate" layoutX="266.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Donator" />
-            <Button layoutX="891.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#logoutbuttonAction" text="LOGOUT" />
+            <Button fx:id="volunteer" layoutX="662.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#volunteerAction" prefHeight="81.0" prefWidth="160.0" text="Volunteer" />
+            <Button fx:id="donate" layoutX="177.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="72.0" prefWidth="125.0" text="Donator" />
+            <Button layoutX="898.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#logoutbuttonAction" prefHeight="33.0" prefWidth="70.0" text="LOGOUT" />
          </children>
       </AnchorPane>
    </children>
