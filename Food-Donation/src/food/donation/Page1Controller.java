@@ -30,6 +30,7 @@ public class Page1Controller implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
+        
        root = FXMLLoader.load(getClass().getResource("page2.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);

@@ -23,15 +23,15 @@
                </image>
             </ImageView>
             <Button fx:id="foodde" layoutX="141.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#fooddetailsAction" prefHeight="45.0" prefWidth="341.0" text="Add Food Details" />
-            <Label layoutX="136.0" layoutY="42.0" text="Name:">
+            <Label layoutX="136.0" layoutY="63.0" text="Name:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField layoutX="140.0" layoutY="69.0" prefHeight="54.0" prefWidth="332.0" />
-            <TextArea layoutX="140.0" layoutY="261.0" prefHeight="98.0" prefWidth="341.0" />
-            <TextField layoutX="140.0" layoutY="163.0" prefHeight="54.0" prefWidth="332.0" />
-            <DatePicker layoutX="134.0" layoutY="487.0" prefHeight="33.0" prefWidth="235.0" promptText="Collection date" />
+            <TextField layoutX="140.0" layoutY="94.0" prefHeight="54.0" prefWidth="332.0" />
+            <TextArea layoutX="136.0" layoutY="268.0" prefHeight="98.0" prefWidth="341.0" />
+            <TextField layoutX="140.0" layoutY="182.0" prefHeight="54.0" prefWidth="332.0" />
+            <DatePicker layoutX="175.0" layoutY="487.0" prefHeight="33.0" prefWidth="235.0" promptText="Collection date" />
             <Button layoutX="237.0" layoutY="565.0" mnemonicParsing="false" text="CONFIRM" />
             <Button layoutX="403.0" layoutY="565.0" mnemonicParsing="false" text="CANCEL" />
             <TableView fx:id="tableview" editable="true" fixedCellSize="0.0" layoutX="522.0" layoutY="54.0" prefHeight="466.0" prefWidth="309.0" visible="false">
@@ -41,17 +41,17 @@
                 <TableColumn fx:id="quantity" prefWidth="127.0" text="Quantity (packets)" />
               </columns>
             </TableView>
-            <Label layoutX="136.0" layoutY="129.0" text="Phone No.:">
+            <Label layoutX="136.0" layoutY="152.0" text="Phone No.:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="136.0" layoutY="227.0" text="Address:">
+            <Label layoutX="136.0" layoutY="239.0" text="Address:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="back" layoutX="922.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#backbuttonAction" text="Back" />
+            <Button fx:id="back" layoutX="930.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#backbuttonAction" text="Back" />
          </children>
       </AnchorPane>
    </children>
