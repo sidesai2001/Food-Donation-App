@@ -22,18 +22,28 @@ import javafx.stage.Stage;
  *
  * @author Siddhant Desai
  */
-public class VolunteerController implements Initializable {
+public class SignupController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
+    
     private Stage stage;
     private Scene scene;
     private Parent root;
     
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException {
-       root = FXMLLoader.load(getClass().getResource("selector.fxml"));
+       root = FXMLLoader.load(getClass().getResource("signin.fxml"));
+       stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+       scene = new Scene(root);
+       stage.setScene(scene);
+       stage.show();
+    }
+    
+    @FXML
+    private void signupbuttonAction(MouseEvent event) throws IOException {
+       root = FXMLLoader.load(getClass().getResource("signin.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);
        stage.setScene(scene);

@@ -106,7 +106,7 @@ public class SigninController implements Initializable {
                 pass.setStyle(successStyle);
                 new animatefx.animation.Tada(invalidDetails).play();
                 
-                root = FXMLLoader.load(getClass().getResource("page1.fxml"));
+                root = FXMLLoader.load(getClass().getResource("selector.fxml"));
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -129,6 +129,14 @@ public class SigninController implements Initializable {
 
     }
     
+    @FXML
+    private void signupbuttonAction(MouseEvent event) throws IOException {
+       root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+       stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+       scene = new Scene(root);
+       stage.setScene(scene);
+       stage.show();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
