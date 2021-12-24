@@ -5,6 +5,7 @@
  */
 package food.donation;
 
+import static com.sun.javafx.fxml.expression.Expression.not;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import static javax.lang.model.type.TypeKind.NULL;
 
 /**
  * FXML Controller class
@@ -96,17 +98,9 @@ public class SignupController implements Initializable {
                         new animatefx.animation.Shake(pass).play();
                         new animatefx.animation.Wobble(passwordIcon).play();
                     }
-        } else // Check if password is less than four characters, if so display error message
-            if (pass.getText().length() < 4) {
-                invalidDetails.setText("The Password can't be less than 4 characters!");
-                invalidDetails.setStyle(errorMessage);
-                pass.setStyle(errorStyle);
-                new animatefx.animation.FadeIn(pass).play();
-                new animatefx.animation.Wobble(passwordIcon).play();
-            }
-            // If all login details are entered as required then display success message
-            else {
-                invalidDetails.setText("Login Successful!");
+        } else // match the string
+            if  (emailid.getText().matches("(.*)@gmail.com") && pass.getText().matches("admin")){
+ 
                 invalidDetails.setStyle(successMessage);
                 emailid.setStyle(successStyle);
                 pass.setStyle(successStyle);
@@ -117,9 +111,22 @@ public class SignupController implements Initializable {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+               
             }
-        
-     
+            // If all login details are entered as required then display success message
+           else{
+                    invalidDetails.setText("Check Email Id and Password");
+                    invalidDetails.setStyle(errorMessage);
+                    emailid.setStyle(errorStyle);
+                    pass.setStyle(errorStyle);
+                    new animatefx.animation.FadeIn(pass).play();
+                    new animatefx.animation.Wobble(passwordIcon).play();
+                    emailid.clear();
+                    pass.clear();
+                    
+                   
+            }
+
     }
     
     @Override
