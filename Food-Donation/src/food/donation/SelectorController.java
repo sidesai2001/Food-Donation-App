@@ -22,7 +22,7 @@ import javafx.stage.Stage;
  *
  * @author Siddhant Desai
  */
-public class Page1Controller implements Initializable {
+public class SelectorController implements Initializable {
     
     private Stage stage;
     private Scene scene;
@@ -31,7 +31,7 @@ public class Page1Controller implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         
-       root = FXMLLoader.load(getClass().getResource("page2.fxml"));
+       root = FXMLLoader.load(getClass().getResource("donar.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);
        stage.setScene(scene);
@@ -50,7 +50,7 @@ public class Page1Controller implements Initializable {
     
     @FXML
     private void logoutbuttonAction(MouseEvent event) throws IOException {
-       root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+       root = FXMLLoader.load(getClass().getResource("signin.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);
        stage.setScene(scene);

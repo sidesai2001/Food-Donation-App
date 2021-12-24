@@ -29,7 +29,7 @@ import static javax.lang.model.type.TypeKind.NULL;
  *
  * @author Siddhant Desai
  */
-public class SignupController implements Initializable {
+public class SigninController implements Initializable {
 
        // Strings which hold css elements to easily re-use in the application
     protected

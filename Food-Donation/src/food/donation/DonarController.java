@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author Siddhant Desai
  */
-public class Page2Controller implements Initializable {
+public class DonarController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -35,7 +35,7 @@ public class Page2Controller implements Initializable {
     
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException {
-       root = FXMLLoader.load(getClass().getResource("page1.fxml"));
+       root = FXMLLoader.load(getClass().getResource("selector.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);
        stage.setScene(scene);
