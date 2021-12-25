@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -27,6 +28,8 @@ public class SignupController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    @FXML
+    private ChoiceBox selection;
     
     private Stage stage;
     private Scene scene;
@@ -53,6 +56,10 @@ public class SignupController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        selection.getItems().add("Donar");
+        selection.getItems().add("Volunteer");
+        
+        
     }    
     
 }
