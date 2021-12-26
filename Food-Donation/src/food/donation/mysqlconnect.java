@@ -2,22 +2,25 @@
 package food.donation;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class mysqlconnect 
 {
-   public Connection conn;
+    Connection conn = null;
     
-    public Connection ConnectDb()
+    public static Connection ConnectDb()
     {
         try 
         {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/food_doantion_app","root","");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/food_donation_app","root","");
+            return conn;
         } 
-        catch (ClassNotFoundException | SQLException e) 
-        {
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
         }  
-        return conn;
+        
     }
 }
 

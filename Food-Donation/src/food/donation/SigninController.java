@@ -5,9 +5,12 @@
  */
 package food.donation;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 import static com.sun.javafx.fxml.expression.Expression.not;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import static javax.lang.model.type.TypeKind.NULL;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -58,6 +62,9 @@ public class SigninController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
    
     private Stage stage;
     private Scene scene;
@@ -68,7 +75,15 @@ public class SigninController implements Initializable {
     @FXML
     private void toLoginAction(MouseEvent event) throws IOException {
         
-               // In case the Username and Password fields are left blank then display the error message
+        conn = (Connection) mysqlconnect.ConnectDb();
+        String sql = "Select * from signup where S_emailid = ? and S_pass = ?";
+        try {
+            pst = (PreparedStatement) conn.prepareStatement(sql);
+            pst.setString(1, emailid.getText());
+            pst.setString(2, pass.getText());
+            rs = pst.executeQuery();
+            if(rs.next()){
+                // In case the Username and Password fields are left blank then display the error message
         if (emailid.getText().isEmpty() || pass.getText().isEmpty()) {
                 invalidDetails.setStyle(errorMessage);
 
@@ -99,23 +114,17 @@ public class SigninController implements Initializable {
                         new animatefx.animation.Wobble(passwordIcon).play();
                     }
         } else // match the string
-            if  (emailid.getText().matches("(.*)@gmail.com") && pass.getText().matches("admin")){
- 
-                invalidDetails.setStyle(successMessage);
-                emailid.setStyle(successStyle);
-                pass.setStyle(successStyle);
-                new animatefx.animation.Tada(invalidDetails).play();
-                
                 root = FXMLLoader.load(getClass().getResource("selector.fxml"));
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
                
+        
             }
-            // If all login details are entered as required then display success message
-           else{
-                    invalidDetails.setText("Check Email Id and Password");
+        else
+                
+                 invalidDetails.setText("Check Email Id and Password");
                     invalidDetails.setStyle(errorMessage);
                     emailid.setStyle(errorStyle);
                     pass.setStyle(errorStyle);
@@ -123,20 +132,23 @@ public class SigninController implements Initializable {
                     new animatefx.animation.Wobble(passwordIcon).play();
                     emailid.clear();
                     pass.clear();
-                    
-                   
-            }
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+               
 
     }
     
     @FXML
     private void signupbuttonAction(MouseEvent event) throws IOException {
-       root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+        root = FXMLLoader.load(getClass().getResource("signup.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);
        stage.setScene(scene);
        stage.show();
     }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
