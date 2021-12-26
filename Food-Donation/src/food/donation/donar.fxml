@@ -43,7 +43,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TableView fx:id="tableview" editable="true" fixedCellSize="0.0" layoutX="538.0" layoutY="148.0" prefHeight="365.0" prefWidth="322.0">
+            <TableView fx:id="tableview" editable="true" fixedCellSize="0.0" layoutX="538.0" layoutY="148.0" prefHeight="365.0" prefWidth="322.0" visible="false">
               <columns>
                 <TableColumn fx:id="srnumber" prefWidth="39.0" text="Sr.  No." />
                   <TableColumn fx:id="foodname" prefWidth="196.0" text="Food Name" />

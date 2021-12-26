@@ -56,7 +56,7 @@ public class SignupController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        selection.getItems().add("Donar");
+        selection.getItems().add("Donor");
         selection.getItems().add("Volunteer");
         
         

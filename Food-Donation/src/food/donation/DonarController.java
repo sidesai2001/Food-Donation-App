@@ -76,7 +76,7 @@ public class DonarController implements Initializable {
     
     @FXML
     private void fooddetailsAction(MouseEvent event) throws IOException {
-       
+       tableview.setVisible(true); 
                     
     }
     

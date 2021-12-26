@@ -13,7 +13,7 @@
    <children>
       <AnchorPane prefHeight="699.0" prefWidth="980.0">
          <children>
-            <ImageView fitHeight="671.0" fitWidth="980.0" layoutY="-1.0" onMouseClicked="#signupbuttonAction" pickOnBounds="true">
+            <ImageView fitHeight="671.0" fitWidth="980.0" layoutY="-1.0" pickOnBounds="true">
                <image>
                   <Image url="@A/l.png" />
                </image>
