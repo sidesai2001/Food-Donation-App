@@ -6,7 +6,7 @@ import java.sql.*;
 public class mysqlconnect 
 {
    public Connection conn;
-   
+    
     public Connection ConnectDb()
     {
         try 
