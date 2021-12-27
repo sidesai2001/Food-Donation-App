@@ -6,8 +6,10 @@
 package food.donation;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+import java.awt.HeadlessException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +44,8 @@ public class SignupController implements Initializable {
     private TextField emailid;
     
     @FXML
-    private TextField pass;
+    private PasswordField pass;
+    
     @FXML
     private ChoiceBox user;
     
@@ -52,6 +55,11 @@ public class SignupController implements Initializable {
     
     Connection conn = null;
     PreparedStatement pst = null;
+    
+    @FXML
+    private void passvisible(MouseEvent event) throws IOException {
+       pass.setVisible(true);
+    }
     
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException {
@@ -70,24 +78,24 @@ public class SignupController implements Initializable {
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
-           pst.setString(1,name.getText());
-           pst.setString(2,phone.getText());
-           pst.setString(3,emailid.getText());
-           pst.setString(4,pass.getText());
-           pst.setString(5,user.getValue().toString());
+           pst.setString(1, name.getText());
+           pst.setString(2, phone.getText());
+           pst.setString(3, emailid.getText());
+           pst.setString(4, pass.getText());
+           pst.setString(5, (String) user.getValue());
            pst.execute();
            JOptionPane.showMessageDialog(null, "Saved");
+           
+           root = FXMLLoader.load(getClass().getResource("signin.fxml"));
+           stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+           scene = new Scene(root);
+           stage.setScene(scene);
+           stage.show();
        }
-       catch(Exception e)
+       catch(HeadlessException | SQLException e)
        {
            JOptionPane.showMessageDialog(null, e);
        }
-       
-       root = FXMLLoader.load(getClass().getResource("signin.fxml"));
-       stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-       scene = new Scene(root);
-       stage.setScene(scene);
-       stage.show();
     }
     
     @Override

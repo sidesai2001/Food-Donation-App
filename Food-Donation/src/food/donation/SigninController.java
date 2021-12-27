@@ -84,7 +84,7 @@ public class SigninController implements Initializable {
             rs = pst.executeQuery();
             if(rs.next()){
                 // In case the Username and Password fields are left blank then display the error message
-        if (emailid.getText().isEmpty() || pass.getText().isEmpty()) {
+            if (emailid.getText().isEmpty() || pass.getText().isEmpty()) {
                 invalidDetails.setStyle(errorMessage);
 
             // When the username and password are blank
@@ -99,6 +99,7 @@ public class SigninController implements Initializable {
                 new animatefx.animation.Wobble(passwordIcon).play();
 
             } else // When only the username is blank
+            {
                 if (emailid.getText().isEmpty()) {
                     emailid.setStyle(errorStyle);
                     invalidDetails.setText("The Username or Email is required!");
@@ -106,6 +107,7 @@ public class SigninController implements Initializable {
                     new animatefx.animation.Shake(emailid).play();
                     new animatefx.animation.Pulse(usersIcon).play();
                 } else // When only the password is blank
+                {
                     if (pass.getText().isEmpty()) {
                         pass.setStyle(errorStyle);
                         invalidDetails.setText("The Password is required!");
@@ -113,16 +115,21 @@ public class SigninController implements Initializable {
                         new animatefx.animation.Shake(pass).play();
                         new animatefx.animation.Wobble(passwordIcon).play();
                     }
-        } else // match the string
+                    
+                }
+            }
+        } else
+            {
                 root = FXMLLoader.load(getClass().getResource("selector.fxml"));
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-               
+            }   
         
-            }
-        else
+        
+        }
+            else{
                 
                  invalidDetails.setText("Check Email Id and Password");
                     invalidDetails.setStyle(errorMessage);
@@ -132,6 +139,7 @@ public class SigninController implements Initializable {
                     new animatefx.animation.Wobble(passwordIcon).play();
                     emailid.clear();
                     pass.clear();
+            }
         }catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
