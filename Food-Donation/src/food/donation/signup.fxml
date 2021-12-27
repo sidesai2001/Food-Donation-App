@@ -52,11 +52,12 @@
          </font>
       </Label>
       <ChoiceBox fx:id="user" layoutX="580.0" layoutY="310.0" prefWidth="150.0" />
-      <PasswordField fx:id="pass" layoutX="182.0" layoutY="543.0" prefHeight="33.0" prefWidth="346.0" />
-      <ImageView fitHeight="28.0" fitWidth="46.0" layoutX="482.0" layoutY="548.0" onMouseClicked="#passvisible" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="28.0" fitWidth="46.0" layoutX="488.0" layoutY="548.0" onMouseClicked="#passvisible" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@A/pass.png" />
          </image>
       </ImageView>
+      <TextField fx:id="label1" layoutX="180.0" layoutY="541.0" prefHeight="33.0" prefWidth="316.0" />
+      <PasswordField fx:id="pass" layoutX="180.0" layoutY="542.0" prefHeight="33.0" prefWidth="316.0" />
    </children>
 </AnchorPane>

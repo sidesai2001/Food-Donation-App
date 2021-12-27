@@ -17,7 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -49,6 +51,12 @@ public class SignupController implements Initializable {
     @FXML
     private ChoiceBox user;
     
+    @FXML
+    private TextField label1;
+    
+    @FXML
+    private CheckBox passv;
+    
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -58,7 +66,19 @@ public class SignupController implements Initializable {
     
     @FXML
     private void passvisible(MouseEvent event) throws IOException {
-       pass.setVisible(true);
+        if(label1.isVisible() == false)
+        {
+            pass.setVisible(false);
+            label1.setVisible(true);
+            String password = pass.getText();
+            label1.setText(password);
+        }
+        else
+        {
+            label1.setVisible(false);
+            pass.setVisible(true);
+        }
+        
     }
     
     @FXML
