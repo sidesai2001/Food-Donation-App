@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package food.donation;
-
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,8 +16,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -29,11 +33,25 @@ public class SignupController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    private ChoiceBox selection;
+    private TextField name;
+    
+    @FXML
+    private TextField phone;
+    
+    @FXML
+    private TextField emailid;
+    
+    @FXML
+    private TextField pass;
+    @FXML
+    private ChoiceBox user;
     
     private Stage stage;
     private Scene scene;
     private Parent root;
+    
+    Connection conn = null;
+    PreparedStatement pst = null;
     
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException {
@@ -45,7 +63,26 @@ public class SignupController implements Initializable {
     }
     
     @FXML
-    private void signupbuttonAction(MouseEvent event) throws IOException {
+    private void signupbuttonAction(MouseEvent event) throws IOException 
+    {
+       conn =(Connection) mysqlconnect.ConnectDb();
+       String sql="INSERT INTO signup (S_name,S_phone,S_emailid,S_pass,S_user) VALUES (?,?,?,?,?)";
+       try
+       {
+           pst = (PreparedStatement) conn.prepareStatement(sql);
+           pst.setString(1,name.getText());
+           pst.setString(2,phone.getText());
+           pst.setString(3,emailid.getText());
+           pst.setString(4,pass.getText());
+           pst.setString(5,user.getValue().toString());
+           pst.execute();
+           JOptionPane.showMessageDialog(null, "Saved");
+       }
+       catch(Exception e)
+       {
+           JOptionPane.showMessageDialog(null, e);
+       }
+       
        root = FXMLLoader.load(getClass().getResource("signin.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);
@@ -56,8 +93,8 @@ public class SignupController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        selection.getItems().add("Donor");
-        selection.getItems().add("Volunteer");
+        user.getItems().add("Donor");
+        user.getItems().add("Volunteer");
         
         
     }    
