@@ -59,6 +59,9 @@ public class SigninController implements Initializable {
 
     @FXML
     private TextField emailid;
+    
+    @FXML
+    private TextField label1;
     /**
      * Initializes the controller class.
      */
@@ -124,6 +127,7 @@ public class SigninController implements Initializable {
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
+                stage.setResizable(false);
                 stage.show();
             }   
         
@@ -154,6 +158,23 @@ public class SigninController implements Initializable {
        scene = new Scene(root);
        stage.setScene(scene);
        stage.show();
+    }
+    
+    @FXML
+    private void passvisible(MouseEvent event) throws IOException {
+        if(label1.isVisible() == false)
+        {
+            pass.setVisible(false);
+            label1.setVisible(true);
+            String password = pass.getText();
+            label1.setText(password);
+        }
+        else
+        {
+            label1.setVisible(false);
+            pass.setVisible(true);
+        }
+        
     }
     
     

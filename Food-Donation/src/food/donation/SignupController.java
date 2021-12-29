@@ -103,8 +103,8 @@ public class SignupController implements Initializable {
            pst.setString(3, emailid.getText());
            pst.setString(4, pass.getText());
            pst.setString(5, (String) user.getValue());
-           pst.execute();
-           JOptionPane.showMessageDialog(null, "Saved");
+           pst.execute();           
+           JOptionPane.showMessageDialog(null,"Congratulations, Your account has been successfully created.","Success",JOptionPane.INFORMATION_MESSAGE);
            
            root = FXMLLoader.load(getClass().getResource("signin.fxml"));
            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
