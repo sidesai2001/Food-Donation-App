@@ -29,8 +29,7 @@ public class SelectorController implements Initializable {
     private Parent root;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
-        
+    private void donatebuttonAction(MouseEvent event) throws IOException {
        root = FXMLLoader.load(getClass().getResource("donar.fxml"));
        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
        scene = new Scene(root);

@@ -30,7 +30,7 @@ public class AdminController implements Initializable {
      * Initializes the controller class.
      */
     
-     @FXML
+    @FXML
     private Button donar;
 
     @FXML

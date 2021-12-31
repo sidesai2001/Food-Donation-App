@@ -48,7 +48,7 @@
                </image>
             </ImageView>
             <Button fx:id="volunteer" layoutX="662.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#volunteerAction" prefHeight="81.0" prefWidth="160.0" text="Volunteer" />
-            <Button fx:id="donate" layoutX="177.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="72.0" prefWidth="125.0" text="Donor" />
+            <Button fx:id="donate" layoutX="177.0" layoutY="457.0" mnemonicParsing="false" onMouseClicked="#donatebuttonAction" prefHeight="72.0" prefWidth="125.0" text="Donar" />
             <ImageView fitHeight="72.0" fitWidth="48.0" layoutX="925.0" layoutY="5.0" onMouseClicked="#logoutbuttonAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@A/logout.png" />

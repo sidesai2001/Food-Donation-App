@@ -5,13 +5,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="671.0" prefWidth="977.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="food.donation.AdminController">
+<AnchorPane id="AnchorPane" prefHeight="671.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="food.donation.AdminController">
    <children>
       <Button fx:id="donar" layoutX="109.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#donar" text="Donar" />
       <Button fx:id="vol" layoutX="286.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#vol" text="Volunteer" />
       <Button layoutX="911.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#logoutbuttonAction" text="logout" />
-      <TableView fx:id="donartable" layoutX="121.0" layoutY="85.0" prefHeight="563.0" prefWidth="681.0">
+      <TableView fx:id="donartable" layoutX="121.0" layoutY="85.0" prefHeight="563.0" prefWidth="681.0" visible="false">
         <columns>
           <TableColumn prefWidth="158.0" text="Name" />
           <TableColumn prefWidth="135.0" text="Phone No " />
@@ -19,7 +18,7 @@
             <TableColumn prefWidth="176.0" text="Collection Date" />
         </columns>
       </TableView>
-      <TableView fx:id="voltable" layoutX="86.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="voltable" layoutX="86.0" layoutY="99.0" prefHeight="200.0" prefWidth="200.0" visible="false">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
