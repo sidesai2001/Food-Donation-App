@@ -58,6 +58,9 @@ public class DonarController implements Initializable {
     private TextField srno;
     
     @FXML
+    private TextField name;
+    
+    @FXML
     private TextField foodnm;
 
     @FXML
@@ -77,6 +80,9 @@ public class DonarController implements Initializable {
 
     @FXML
     private TableColumn<Food, String> quantity1;
+    
+    @FXML
+    private TableColumn<Food, String> name1;
     
     @FXML
     private TableColumn<Food, String> date1;
@@ -111,15 +117,16 @@ public class DonarController implements Initializable {
     private void fooddetailsAction(MouseEvent event) throws IOException { 
         
         conn =(Connection) mysqlconnect.ConnectDb();
-       String sql="INSERT INTO donor_food (Srno,Food_name,Number_of_packets,address,Collection_date) VALUES (?,?,?,?,?)";
+       String sql="INSERT INTO donor_food (S_name,Srno,Food_name,Number_of_packets,address,Collection_date) VALUES (?,?,?,?,?,?)";
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
-           pst.setString(1, srno.getText());
-           pst.setString(2, foodnm.getText());
-           pst.setString(3, quantity.getText());
-           pst.setString(4, address.getText());
-           pst.setString(5, date.getValue().toString());
+           pst.setString(1, name.getText());
+           pst.setString(2, srno.getText());
+           pst.setString(3, foodnm.getText());
+           pst.setString(4, quantity.getText());
+           pst.setString(5, address.getText());
+           pst.setString(6, date.getValue().toString());
            pst.execute();       
        }
        catch(HeadlessException | SQLException e)
@@ -127,10 +134,11 @@ public class DonarController implements Initializable {
            JOptionPane.showMessageDialog(null, e);
        }
        
-        Food foodadd = new Food(srno.getText(),foodnm.getText(),quantity.getText(),address.getText(),date.getValue().toString());
+        Food foodadd = new Food(name.getText(),srno.getText(),foodnm.getText(),quantity.getText(),address.getText(),date.getValue().toString());
         ObservableList<Food> list = tableview.getItems();
         list.add(foodadd );
-        tableview.setItems(list);          
+        tableview.setItems(list);     
+        name.clear();
         srno.clear();
         foodnm.clear();
         address.clear();
@@ -159,6 +167,7 @@ public class DonarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO 
+       name1.setCellValueFactory(new PropertyValueFactory<Food, String>("name")); 
        srnumber.setCellValueFactory(new PropertyValueFactory<Food, String>("srnumber"));
        foodname.setCellValueFactory(new PropertyValueFactory<Food, String>("foodname"));
        quantity1.setCellValueFactory(new PropertyValueFactory<Food, String>("quantity"));

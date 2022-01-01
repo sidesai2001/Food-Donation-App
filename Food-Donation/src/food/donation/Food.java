@@ -19,18 +19,28 @@ import javafx.util.StringConverter;
  * @author Siddhant Desai
  */
 public class Food {
+    private String name;
     private String srnumber;
     private String foodname;
     private String quantity;
     private String address;
     private String date;
 
-    public Food(String srnumber, String foodname, String quantity, String address, String date) {
+    public Food(String name,String srnumber, String foodname, String quantity, String address, String date) {
+        this.name = name;
         this.srnumber = srnumber;
         this.foodname = foodname;
         this.quantity = quantity;
         this.address = address;
         this.date = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
    

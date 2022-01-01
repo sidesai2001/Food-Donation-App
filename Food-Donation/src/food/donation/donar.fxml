@@ -23,27 +23,28 @@
                </image>
             </ImageView>
             <Button fx:id="foodde" layoutX="257.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#fooddetailsAction" prefHeight="45.0" prefWidth="161.0" text="Add Food Details" />
-            <Label layoutX="736.0" layoutY="128.0" prefHeight="25.0" prefWidth="69.0" text="Sr. No.">
+            <Label layoutX="736.0" layoutY="196.0" prefHeight="25.0" prefWidth="69.0" text="Sr. No.">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="srno" layoutX="729.0" layoutY="153.0" prefHeight="54.0" prefWidth="332.0" />
-            <TextField fx:id="foodnm" layoutX="729.0" layoutY="246.0" prefHeight="54.0" prefWidth="332.0" />
-            <Label layoutX="729.0" layoutY="221.0" text="Food Name">
+            <TextField fx:id="srno" layoutX="729.0" layoutY="221.0" prefHeight="54.0" prefWidth="332.0" />
+            <TextField fx:id="foodnm" layoutX="729.0" layoutY="314.0" prefHeight="54.0" prefWidth="332.0" />
+            <Label layoutX="729.0" layoutY="289.0" text="Food Name">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="729.0" layoutY="300.0" text="Quantity (Packets)">
+            <Label layoutX="729.0" layoutY="368.0" text="Quantity (Packets)">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TableView fx:id="tableview" layoutX="103.0" layoutY="120.0" prefHeight="495.0" prefWidth="590.0">
+            <TableView fx:id="tableview" layoutX="42.0" layoutY="121.0" prefHeight="495.0" prefWidth="666.0">
               <columns>
-                <TableColumn fx:id="srnumber" prefWidth="42.0" text="Sr.  No." />
-                <TableColumn fx:id="foodname" prefWidth="221.0" text="Food Name" />
+                  <TableColumn fx:id="name1" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="srnumber" prefWidth="59.0" text="Sr.  No." />
+                <TableColumn fx:id="foodname" prefWidth="204.0" text="Food Name" />
                   <TableColumn fx:id="quantity1" prefWidth="66.0" text="Quantity (packets)" />
                   <TableColumn fx:id="add" prefWidth="180.0" text="Address" />
                   <TableColumn fx:id="date1" minWidth="0.0" text="Date" />
@@ -51,15 +52,21 @@
             </TableView>
             <Button fx:id="back" layoutX="21.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#backbuttonAction" text="Back" />
             <Button fx:id="remove" layoutX="461.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#remove" prefHeight="45.0" prefWidth="161.0" text="Remove" />
-            <TextField fx:id="quantity" layoutX="729.0" layoutY="333.0" prefHeight="54.0" prefWidth="332.0" />
-            <Label layoutX="729.0" layoutY="401.0" text="Address">
+            <TextField fx:id="quantity" layoutX="729.0" layoutY="401.0" prefHeight="54.0" prefWidth="332.0" />
+            <Label layoutX="729.0" layoutY="469.0" text="Address">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextArea fx:id="address" layoutX="729.0" layoutY="426.0" prefHeight="121.0" prefWidth="332.0" />
-            <DatePicker fx:id="date" layoutX="725.0" layoutY="567.0" prefHeight="38.0" prefWidth="332.0" promptText="Collection Date" />
+            <TextArea fx:id="address" layoutX="729.0" layoutY="494.0" prefHeight="75.0" prefWidth="332.0" />
+            <DatePicker fx:id="date" layoutX="729.0" layoutY="596.0" prefHeight="38.0" prefWidth="332.0" promptText="Collection Date" />
             <Button fx:id="submit" layoutX="656.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#submitbt" prefHeight="45.0" prefWidth="161.0" text="Submit" />
+            <TextField fx:id="name" layoutX="729.0" layoutY="142.0" prefHeight="54.0" prefWidth="332.0" />
+            <Label layoutX="732.0" layoutY="117.0" prefHeight="25.0" prefWidth="69.0" text="Name:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
