@@ -5,6 +5,15 @@
  */
 package food.donation;
 
+
+import java.sql.Date;
+import java.time.LocalDate;
+import javafx.scene.control.DatePicker;
+import javafx.util.StringConverter;
+
+
+
+
 /**
  *
  * @author Siddhant Desai
@@ -13,20 +22,18 @@ public class Food {
     private String srnumber;
     private String foodname;
     private String quantity;
+    private String address;
+    private String date;
 
-    public Food(String srnumber, String foodname, String quantity) {
+    public Food(String srnumber, String foodname, String quantity, String address, String date) {
         this.srnumber = srnumber;
         this.foodname = foodname;
         this.quantity = quantity;
+        this.address = address;
+        this.date = date;
     }
 
-    Food() {
-        
-    }
-
-    Food(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     public String getSrnumber() {
         return srnumber;
@@ -52,8 +59,21 @@ public class Food {
         this.quantity = quantity;
     }
 
-   
-   
-   
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     
 }

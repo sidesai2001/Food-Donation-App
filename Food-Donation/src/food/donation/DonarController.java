@@ -5,12 +5,14 @@
  */
 package food.donation;
 
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import food.donation.Food;
+import java.awt.HeadlessException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,10 +24,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -43,6 +47,9 @@ public class DonarController implements Initializable {
     
     @FXML
     private TextField quantity;
+    
+    @FXML
+    private TextArea address;
     
     @FXML
     private DatePicker date;
@@ -64,43 +71,89 @@ public class DonarController implements Initializable {
 
     @FXML
     private TableColumn<Food, String> foodname;
+    
+    @FXML
+    private TableColumn<Food, String> add;
 
     @FXML
     private TableColumn<Food, String> quantity1;
     
+    @FXML
+    private TableColumn<Food, String> date1;
+    
     private Stage stage;
     private Scene scene;
     private Parent root;
+    Connection conn = null;
+    PreparedStatement pst = null;
 
     @FXML
-    private void backbuttonAction(MouseEvent event){
-        try {
-            root = FXMLLoader.load(getClass().getResource("selector.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DonarController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void backbuttonAction(MouseEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("selector.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show(); 
     }
-
+    
+    @FXML
+    private void submitbt(MouseEvent event) throws IOException 
+    {
+        JOptionPane.showMessageDialog(null,"Great! Your data was sent successfully. Thanks","Success",JOptionPane.INFORMATION_MESSAGE);    
+        root = FXMLLoader.load(getClass().getResource("selector.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     
     @FXML
     private void fooddetailsAction(MouseEvent event) throws IOException { 
-        Food foodadd = new Food(srno.getText(),foodnm.getText(),quantity.getText());
+        
+        conn =(Connection) mysqlconnect.ConnectDb();
+       String sql="INSERT INTO donor_food (Srno,Food_name,Number_of_packets,address,Collection_date) VALUES (?,?,?,?,?)";
+       try
+       {
+           pst = (PreparedStatement) conn.prepareStatement(sql);
+           pst.setString(1, srno.getText());
+           pst.setString(2, foodnm.getText());
+           pst.setString(3, quantity.getText());
+           pst.setString(4, address.getText());
+           pst.setString(5, date.getValue().toString());
+           pst.execute();       
+       }
+       catch(HeadlessException | SQLException e)
+       {
+           JOptionPane.showMessageDialog(null, e);
+       }
+       
+        Food foodadd = new Food(srno.getText(),foodnm.getText(),quantity.getText(),address.getText(),date.getValue().toString());
         ObservableList<Food> list = tableview.getItems();
         list.add(foodadd );
         tableview.setItems(list);          
         srno.clear();
         foodnm.clear();
+        address.clear();
         quantity.clear();
+        date.getEditor().clear();
     }
     
     @FXML
     private void remove(MouseEvent event) throws IOException {
        int selectedID = tableview.getSelectionModel().getSelectedIndex();
        tableview.getItems().remove(selectedID);
+       conn =(Connection) mysqlconnect.ConnectDb();
+       String sql="DELETE FROM donor_food WHERE Food_name = ?" ;
+       try
+       {
+           pst = (PreparedStatement) conn.prepareStatement(sql);
+           pst.setString(1, foodnm.getText());
+           pst.execute();      
+       }
+       catch(HeadlessException | SQLException e)
+       {
+           JOptionPane.showMessageDialog(null, e);
+       }
     }
         
     @Override
@@ -109,6 +162,9 @@ public class DonarController implements Initializable {
        srnumber.setCellValueFactory(new PropertyValueFactory<Food, String>("srnumber"));
        foodname.setCellValueFactory(new PropertyValueFactory<Food, String>("foodname"));
        quantity1.setCellValueFactory(new PropertyValueFactory<Food, String>("quantity"));
+       add.setCellValueFactory(new PropertyValueFactory<Food, String>("address"));
+       date1.setCellValueFactory(new PropertyValueFactory<Food, String>("date"));
+       
     }
     
         

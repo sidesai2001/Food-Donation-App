@@ -161,15 +161,6 @@ public class SigninController implements Initializable {
     }
     
     @FXML
-    private void admin(MouseEvent event) throws IOException {
-    root = FXMLLoader.load(getClass().getResource("admin.fxml"));
-    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    }
-    
-    @FXML
     private void passvisible(MouseEvent event) throws IOException {
         if(label1.isVisible() == false)
         {
