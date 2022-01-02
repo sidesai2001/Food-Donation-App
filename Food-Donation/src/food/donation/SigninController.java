@@ -75,81 +75,71 @@ public class SigninController implements Initializable {
     private Scene scene;
     private Parent root;
     
-    //ValidationSupport validationSupport = new ValidationSupport();
-    
     @FXML
     private void toLoginAction(MouseEvent event) throws IOException {
         
         conn = (Connection) mysqlconnect.ConnectDb();
         String sql = "Select * from signup where S_emailid = ? and S_pass = ?";
+        String usernm, pswd;
         
         try {
             pst = (PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, emailid.getText());
-            pst.setString(2, pass.getText());
+            usernm = emailid.getText();
+            pswd = pass.getText();
+            pst.setString(1, usernm);
+            pst.setString(2, pswd);
             rs = pst.executeQuery();
             if(rs.next()){
-                // In case the Username and Password fields are left blank then display the error message
-            if (emailid.getText().isEmpty() || pass.getText().isEmpty()) {
-                invalidDetails.setStyle(errorMessage);
-
-            // When the username and password are blank
-            if (emailid.getText().isEmpty() && pass.getText().isEmpty()) {
-                invalidDetails.setText("The Login fields are required!");
-                emailid.setStyle(errorStyle);
-                pass.setStyle(errorStyle);
-
-                new animatefx.animation.Shake(emailid).play();
-                new animatefx.animation.Wobble(usersIcon).play();
-                new animatefx.animation.Shake(pass).play();
-                new animatefx.animation.Wobble(passwordIcon).play();
-
-            } else // When only the username is blank
-            {
-                if (emailid.getText().isEmpty()) {
+                    String user =rs.getString("S_user");
+                    if(user.equals("Donor"))
+                    {
+                        root = FXMLLoader.load(getClass().getResource("donar.fxml"));
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.show();
+                    }
+                    else
+                    {
+			root = FXMLLoader.load(getClass().getResource("volunteer.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.show();
+                    }
+				
+            }
+            
+            else{
+                // When the username and password are blank
+                if (usernm.isEmpty() && pswd.isEmpty()) {
+                    invalidDetails.setText("The Login fields are required!");
                     emailid.setStyle(errorStyle);
-                    invalidDetails.setText("The Username or Email is required!");
-                    pass.setStyle(successStyle);
+                    pass.setStyle(errorStyle);
+
                     new animatefx.animation.Shake(emailid).play();
-                    new animatefx.animation.Pulse(usersIcon).play();
-                } else // When only the password is blank
-                {
-                    if (pass.getText().isEmpty()) {
+                    new animatefx.animation.Wobble(usersIcon).play();
+                    new animatefx.animation.Shake(pass).play();
+                    new animatefx.animation.Wobble(passwordIcon).play();
+
+                }else // When only the username is blank
+                if (usernm.isEmpty()) {
+                        emailid.setStyle(errorStyle);
+                        invalidDetails.setText("The Username or Email is required!");
+                        pass.setStyle(successStyle);
+                        new animatefx.animation.Shake(emailid).play();
+                        new animatefx.animation.Pulse(usersIcon).play();
+                }else // When only the password is blank
+                if (pswd.isEmpty()) {
                         pass.setStyle(errorStyle);
                         invalidDetails.setText("The Password is required!");
                         emailid.setStyle(successStyle);
                         new animatefx.animation.Shake(pass).play();
                         new animatefx.animation.Wobble(passwordIcon).play();
-                    }
-                    
                 }
-            }
-        } else
-            {
-                String user =rs.getString("S_user");
-                if(user.equals("Donor"))
-                {
-                root = FXMLLoader.load(getClass().getResource("donar.fxml"));
-                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-                }
-                else
-                {
-                root = FXMLLoader.load(getClass().getResource("volunteer.fxml"));
-                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-                }
-            }   
-        
-        
-        }
-            else{
+                else{
                     invalidDetails.setText("Check Email Id and Password");
                     invalidDetails.setStyle(errorMessage);
                     emailid.setStyle(errorStyle);
@@ -158,12 +148,11 @@ public class SigninController implements Initializable {
                     new animatefx.animation.Wobble(passwordIcon).play();
                     emailid.clear();
                     pass.clear();
+                }
             }
         }catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-               
-
     }
     
     @FXML
