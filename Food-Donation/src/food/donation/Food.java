@@ -27,14 +27,21 @@ public class Food {
     private String date;
     private String status;
 
-    public Food(String name,String srnumber, String foodname, String quantity, String address, String date) {
+    public Food(String name,String srnumber, String foodname, String quantity, String address, String date,String status) {
         this.name = name;
         this.srnumber = srnumber;
         this.foodname = foodname;
         this.quantity = quantity;
         this.address = address;
         this.date = date;
+        this.status = status;
     }
+
+    Food(String text, String text0, String text1, String text2, String text3, String toString) {
+       
+    }
+
+    
 
     public String getStatus() {
         return status;

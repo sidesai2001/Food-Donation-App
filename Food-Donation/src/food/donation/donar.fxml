@@ -66,9 +66,9 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <ImageView fx:id="back" fitHeight="68.0" fitWidth="83.0" layoutX="14.0" layoutY="33.0" onMouseClicked="#backbuttonAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="back" fitHeight="54.0" fitWidth="57.0" layoutX="18.0" layoutY="51.0" onMouseClicked="#backbuttonAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@A/back.png" />
+                  <Image url="@A/logout.png" />
                </image>
             </ImageView>
             <Button fx:id="history" layoutX="159.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#historybt" prefHeight="45.0" prefWidth="161.0" text="Show History" />

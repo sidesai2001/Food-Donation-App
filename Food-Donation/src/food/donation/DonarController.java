@@ -121,7 +121,7 @@ public class DonarController implements Initializable {
 
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("selector.fxml"));
+        root = FXMLLoader.load(getClass().getResource("signin.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -155,11 +155,18 @@ public class DonarController implements Initializable {
            while(rs.next())
            {
              
-                Food foodadd = new Food(rs.getString("S_name"),rs.getString("Srno"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Collection_date"),rs.getString("Address"));
+                Food historyf = new Food(rs.getString("S_name"),rs.getString("Srno"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Collection_date"),rs.getString("Address"),rs.getString("Status"));
                 ObservableList<Food> list = historytb.getItems();
-                list.add(foodadd );
+                list.add(historyf );
                 historytb.setItems(list);   
                 
+                hname.setCellValueFactory(new PropertyValueFactory<Food, String>("name")); 
+                hsrnumber.setCellValueFactory(new PropertyValueFactory<Food, String>("srnumber"));
+                hfoodname.setCellValueFactory(new PropertyValueFactory<Food, String>("foodname"));
+                hquantity.setCellValueFactory(new PropertyValueFactory<Food, String>("quantity"));
+                hadd.setCellValueFactory(new PropertyValueFactory<Food, String>("address"));
+                hdate.setCellValueFactory(new PropertyValueFactory<Food, String>("date"));
+                status.setCellValueFactory(new PropertyValueFactory<Food, String>("status"));
                 
            }
        }
@@ -171,6 +178,7 @@ public class DonarController implements Initializable {
         }
         else{
             historytb.setVisible(false);
+            historytb.getItems().clear();
         }
     }
     
@@ -196,7 +204,7 @@ public class DonarController implements Initializable {
            JOptionPane.showMessageDialog(null, e);
        }
        
-        Food foodadd = new Food(name.getText(),srno.getText(),foodnm.getText(),quantity.getText(),address.getText(),date.getValue().toString());
+        Food foodadd = new Food(name.getText(),srno.getText(),foodnm.getText(),quantity.getText(),address.getText(),date.getValue().toString(),status.getText());
         ObservableList<Food> list = tableview.getItems();
         list.add(foodadd );
         tableview.setItems(list);     
