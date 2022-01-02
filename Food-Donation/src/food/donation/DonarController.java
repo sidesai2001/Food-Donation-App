@@ -116,7 +116,7 @@ public class DonarController implements Initializable {
     @FXML
     private void fooddetailsAction(MouseEvent event) throws IOException { 
         
-        conn =(Connection) mysqlconnect.ConnectDb();
+       conn =(Connection) mysqlconnect.ConnectDb();
        String sql="INSERT INTO donor_food (S_name,Srno,Food_name,Number_of_packets,address,Collection_date) VALUES (?,?,?,?,?,?)";
        try
        {
@@ -149,13 +149,19 @@ public class DonarController implements Initializable {
     @FXML
     private void remove(MouseEvent event) throws IOException {
        int selectedID = tableview.getSelectionModel().getSelectedIndex();
+       Food f=tableview.getSelectionModel().getSelectedItems().get(selectedID);
        tableview.getItems().remove(selectedID);
        conn =(Connection) mysqlconnect.ConnectDb();
-       String sql="DELETE FROM donor_food WHERE Food_name = ?" ;
+       String sql="DELETE FROM donor_food WHERE S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=?" ;
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
-           pst.setString(1, foodnm.getText());
+           pst.setString(1, f.getName());
+           pst.setString(2, f.getSrnumber());
+           pst.setString(3, f.getFoodname());
+           pst.setString(4, f.getQuantity());
+           pst.setString(5, f.getAddress());
+           pst.setString(6, f.getDate());
            pst.execute();      
        }
        catch(HeadlessException | SQLException e)
