@@ -22,7 +22,7 @@
                   <Image url="@A/volunteer%20(2).png" />
                </image>
             </ImageView>
-            <Button fx:id="foodde" layoutX="257.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#fooddetailsAction" prefHeight="45.0" prefWidth="161.0" text="Add Food Details" />
+            <Button fx:id="foodde" layoutX="341.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#fooddetailsAction" prefHeight="45.0" prefWidth="161.0" text="Add Food Details" />
             <Label layoutX="736.0" layoutY="196.0" prefHeight="25.0" prefWidth="69.0" text="Sr. No.">
                <font>
                   <Font size="16.0" />
@@ -40,7 +40,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TableView fx:id="tableview" layoutX="42.0" layoutY="121.0" prefHeight="495.0" prefWidth="666.0">
+            <TableView fx:id="tableview" layoutX="42.0" layoutY="132.0" prefHeight="495.0" prefWidth="666.0">
               <columns>
                   <TableColumn fx:id="name1" prefWidth="75.0" text="Name" />
                 <TableColumn fx:id="srnumber" prefWidth="59.0" text="Sr.  No." />
@@ -50,8 +50,7 @@
                   <TableColumn fx:id="date1" minWidth="0.0" text="Date" />
               </columns>
             </TableView>
-            <Button fx:id="back" layoutX="21.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#backbuttonAction" text="Back" />
-            <Button fx:id="remove" layoutX="461.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#remove" prefHeight="45.0" prefWidth="161.0" text="Remove" />
+            <Button fx:id="remove" layoutX="526.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#remove" prefHeight="45.0" prefWidth="161.0" text="Remove" />
             <TextField fx:id="quantity" layoutX="729.0" layoutY="401.0" prefHeight="54.0" prefWidth="332.0" />
             <Label layoutX="729.0" layoutY="469.0" text="Address">
                <font>
@@ -60,13 +59,30 @@
             </Label>
             <TextArea fx:id="address" layoutX="729.0" layoutY="494.0" prefHeight="75.0" prefWidth="332.0" />
             <DatePicker fx:id="date" layoutX="729.0" layoutY="596.0" prefHeight="38.0" prefWidth="332.0" promptText="Collection Date" />
-            <Button fx:id="submit" layoutX="656.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#submitbt" prefHeight="45.0" prefWidth="161.0" text="Submit" />
+            <Button fx:id="submit" layoutX="713.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#submitbt" prefHeight="45.0" prefWidth="161.0" text="Submit" />
             <TextField fx:id="name" layoutX="729.0" layoutY="142.0" prefHeight="54.0" prefWidth="332.0" />
             <Label layoutX="732.0" layoutY="117.0" prefHeight="25.0" prefWidth="69.0" text="Name:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
+            <ImageView fx:id="back" fitHeight="68.0" fitWidth="83.0" layoutX="14.0" layoutY="33.0" onMouseClicked="#backbuttonAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@A/back.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="history" layoutX="159.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#historybt" prefHeight="45.0" prefWidth="161.0" text="Show History" />
+            <TableView fx:id="historytb" layoutX="45.0" layoutY="88.0" onMouseClicked="#historybt" prefHeight="595.0" prefWidth="819.0" visible="false">
+               <columns>
+                  <TableColumn fx:id="hname" prefWidth="126.99996948242188" text="Name" />
+                  <TableColumn fx:id="hsrnumber" prefWidth="61.000030517578125" text="Sr.  No." />
+                  <TableColumn fx:id="hfoodname" prefWidth="179.0" text="Food Name" />
+                  <TableColumn fx:id="hquantity" prefWidth="108.0" text="Quantity (packets)" />
+                  <TableColumn fx:id="hadd" prefWidth="151.0" text="Address" />
+                  <TableColumn fx:id="hdate" minWidth="0.0" prefWidth="97.0" text="Date" />
+                  <TableColumn fx:id="status" minWidth="0.0" prefWidth="97.0" text="Status" />
+               </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>

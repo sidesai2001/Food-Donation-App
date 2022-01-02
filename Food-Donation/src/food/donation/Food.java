@@ -25,6 +25,7 @@ public class Food {
     private String quantity;
     private String address;
     private String date;
+    private String status;
 
     public Food(String name,String srnumber, String foodname, String quantity, String address, String date) {
         this.name = name;
@@ -33,6 +34,14 @@ public class Food {
         this.quantity = quantity;
         this.address = address;
         this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getName() {

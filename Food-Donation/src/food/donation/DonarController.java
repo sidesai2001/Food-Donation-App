@@ -11,6 +11,7 @@ import food.donation.Food;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -58,13 +59,37 @@ public class DonarController implements Initializable {
     private TextField srno;
     
     @FXML
+    private Button history;
+    @FXML
     private TextField name;
     
     @FXML
     private TextField foodnm;
+    
+    @FXML
+    private TableView<Food> historytb;
 
     @FXML
-    private Button back;
+    private TableColumn<Food, String> hname;
+
+    @FXML
+    private TableColumn<Food, String> hsrnumber;
+
+    @FXML
+    private TableColumn<Food, String> hfoodname;
+
+    @FXML
+    private TableColumn<Food, String> hquantity;
+
+    @FXML
+    private TableColumn<Food, String> hadd;
+
+    @FXML
+    private TableColumn<Food, String> hdate;
+
+    @FXML
+    private TableColumn<Food, String> status;
+
 
     @FXML
     private TableView<Food> tableview;
@@ -91,6 +116,7 @@ public class DonarController implements Initializable {
     private Scene scene;
     private Parent root;
     Connection conn = null;
+    ResultSet rs = null;
     PreparedStatement pst = null;
 
     @FXML
@@ -106,12 +132,48 @@ public class DonarController implements Initializable {
     private void submitbt(MouseEvent event) throws IOException 
     {
         JOptionPane.showMessageDialog(null,"Great! Your data was sent successfully. Thanks","Success",JOptionPane.INFORMATION_MESSAGE);    
-        root = FXMLLoader.load(getClass().getResource("selector.fxml"));
+        root = FXMLLoader.load(getClass().getResource("signin.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+    
+    @FXML
+    private void historybt(MouseEvent event) throws IOException 
+    {
+        if(historytb.isVisible() == false)
+        {
+            historytb.setVisible(true);
+            conn =(Connection) mysqlconnect.ConnectDb();
+       String sql="SELECT * FROM donor_food ";
+       try
+       {
+           pst = (PreparedStatement) conn.prepareStatement(sql);
+           pst.execute();   
+           rs = pst.executeQuery();
+           while(rs.next())
+           {
+             
+                Food foodadd = new Food(rs.getString("S_name"),rs.getString("Srno"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Collection_date"),rs.getString("Address"));
+                ObservableList<Food> list = historytb.getItems();
+                list.add(foodadd );
+                historytb.setItems(list);   
+                
+                
+           }
+       }
+       catch(HeadlessException | SQLException e)
+       {
+           JOptionPane.showMessageDialog(null, e);
+       }
+            
+        }
+        else{
+            historytb.setVisible(false);
+        }
+    }
+    
     
     @FXML
     private void fooddetailsAction(MouseEvent event) throws IOException { 
