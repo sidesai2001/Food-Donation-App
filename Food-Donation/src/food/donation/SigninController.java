@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -62,6 +63,7 @@ public class SigninController implements Initializable {
     
     @FXML
     private TextField label1;
+    
     /**
      * Initializes the controller class.
      */
@@ -80,6 +82,7 @@ public class SigninController implements Initializable {
         
         conn = (Connection) mysqlconnect.ConnectDb();
         String sql = "Select * from signup where S_emailid = ? and S_pass = ?";
+        
         try {
             pst = (PreparedStatement) conn.prepareStatement(sql);
             pst.setString(1, emailid.getText());
@@ -123,19 +126,31 @@ public class SigninController implements Initializable {
             }
         } else
             {
-                root = FXMLLoader.load(getClass().getResource("selector.fxml"));
+                String user =rs.getString("S_user");
+                if(user.equals("Donor"))
+                {
+                root = FXMLLoader.load(getClass().getResource("donar.fxml"));
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.setResizable(false);
                 stage.show();
+                }
+                else
+                {
+                root = FXMLLoader.load(getClass().getResource("volunteer.fxml"));
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+                }
             }   
         
         
         }
             else{
-                
-                 invalidDetails.setText("Check Email Id and Password");
+                    invalidDetails.setText("Check Email Id and Password");
                     invalidDetails.setStyle(errorMessage);
                     emailid.setStyle(errorStyle);
                     pass.setStyle(errorStyle);
