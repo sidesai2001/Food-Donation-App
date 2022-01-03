@@ -28,6 +28,17 @@ public class FoodDonation extends Application {
         stage.show();
     }
 
+    private static String userName;
+    
+    public static void setUsername(String userName) {
+
+        FoodDonation.userName = userName;
+    }
+    public static String getUser()
+    {
+        return(userName);
+    }
+
     /**
      * @param args the command line arguments
      */
