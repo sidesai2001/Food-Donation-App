@@ -97,12 +97,11 @@ public class VolunteerController implements Initializable {
            rs = pst.executeQuery();
            while(rs.next())
            {
-             
                 Food historyf = new Food(rs.getString("S_name"),rs.getString("Srno"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Collection_date"),rs.getString("Address"),rs.getString("Status"));
                 ObservableList<Food> list = volunteertb.getItems();
                 list.add(historyf );
                 volunteertb.setItems(list);   
-                
+              
                 name1.setCellValueFactory(new PropertyValueFactory<Food, String>("name")); 
                 srnumber.setCellValueFactory(new PropertyValueFactory<Food, String>("srnumber"));
                 foodname.setCellValueFactory(new PropertyValueFactory<Food, String>("foodname"));
@@ -129,7 +128,17 @@ public class VolunteerController implements Initializable {
     
     @FXML
     private void collectionbt(MouseEvent event) throws IOException {
-       
+       conn =(Connection) mysqlconnect.ConnectDb();
+       String sql="UPDATE donor_food SET status='Collected'";
+       try
+       {
+           pst = (PreparedStatement) conn.prepareStatement(sql);
+           pst.execute();            
+       }
+       catch(HeadlessException | SQLException e)
+       {
+           JOptionPane.showMessageDialog(null, e);
+       }
     }
     
     @Override

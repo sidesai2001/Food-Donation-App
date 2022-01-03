@@ -79,17 +79,20 @@ public class SigninController implements Initializable {
         String sql = "Select * from signup where S_emailid = ? and S_pass = ?";
         String usernm, pswd;
         
+        
+        
         try {
             pst = (PreparedStatement) conn.prepareStatement(sql);
             usernm = emailid.getText();
             pswd = pass.getText();
-            pst.setString(1, usernm);
+                      pst.setString(1, usernm);
             pst.setString(2, pswd);
             rs = pst.executeQuery();
             if(rs.next()){
                     String user =rs.getString("S_user");
                     if(user.equals("Donor"))
                     {
+                        FoodDonation.setUsername(rs.getString("S_name"));
                         root = FXMLLoader.load(getClass().getResource("donar.fxml"));
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
@@ -99,6 +102,7 @@ public class SigninController implements Initializable {
                     }
                     else
                     {
+                        FoodDonation.setUsername(rs.getString("S_name"));
 			root = FXMLLoader.load(getClass().getResource("volunteer.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
