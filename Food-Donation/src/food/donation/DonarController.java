@@ -118,6 +118,8 @@ public class DonarController implements Initializable {
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
+    
+    String username=FoodDonation.getUser();
 
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException{
@@ -146,10 +148,11 @@ public class DonarController implements Initializable {
         {
             historytb.setVisible(true);
             conn =(Connection) mysqlconnect.ConnectDb();
-       String sql="SELECT * FROM donor_food ";
+       String sql="SELECT * FROM donor_food WHERE S_name=?";
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
+           pst.setString(1, username);
            pst.execute();   
            rs = pst.executeQuery();
            while(rs.next())
