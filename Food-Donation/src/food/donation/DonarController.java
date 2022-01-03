@@ -23,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -60,8 +61,9 @@ public class DonarController implements Initializable {
     
     @FXML
     private Button history;
+    
     @FXML
-    private TextField name;
+    private Label name;
     
     @FXML
     private TextField foodnm;
@@ -149,6 +151,7 @@ public class DonarController implements Initializable {
             historytb.setVisible(true);
             conn =(Connection) mysqlconnect.ConnectDb();
        String sql="SELECT * FROM donor_food WHERE S_name=?";
+       
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
@@ -194,7 +197,7 @@ public class DonarController implements Initializable {
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
-           pst.setString(1, name.getText());
+           pst.setString(1, username);
            pst.setString(2, srno.getText());
            pst.setString(3, foodnm.getText());
            pst.setString(4, quantity.getText());
@@ -211,7 +214,6 @@ public class DonarController implements Initializable {
         ObservableList<Food> list = tableview.getItems();
         list.add(foodadd );
         tableview.setItems(list);     
-        name.clear();
         srno.clear();
         foodnm.clear();
         address.clear();

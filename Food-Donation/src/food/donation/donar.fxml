@@ -60,7 +60,6 @@
             <TextArea fx:id="address" layoutX="729.0" layoutY="494.0" prefHeight="75.0" prefWidth="332.0" />
             <DatePicker fx:id="date" layoutX="729.0" layoutY="596.0" prefHeight="38.0" prefWidth="332.0" promptText="Collection Date" />
             <Button fx:id="submit" layoutX="713.0" layoutY="710.0" mnemonicParsing="false" onMouseClicked="#submitbt" prefHeight="45.0" prefWidth="161.0" text="Submit" />
-            <TextField fx:id="name" layoutX="729.0" layoutY="142.0" prefHeight="54.0" prefWidth="332.0" />
             <Label layoutX="732.0" layoutY="117.0" prefHeight="25.0" prefWidth="69.0" text="Name:">
                <font>
                   <Font size="16.0" />
@@ -83,6 +82,7 @@
                   <TableColumn fx:id="status" minWidth="0.0" prefWidth="97.0" text="Status" />
                </columns>
             </TableView>
+            <Label fx:id="name" layoutX="729.0" layoutY="142.0" prefHeight="54.0" prefWidth="332.0" />
          </children>
       </AnchorPane>
    </children>
