@@ -9,6 +9,7 @@ import com.mysql.jdbc.PreparedStatement;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -36,8 +37,18 @@ public class SignupController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    protected
+    String successMessage = String.format("-fx-text-fill: GREEN;");
+    String errorMessage = String.format("-fx-text-fill: RED;");
+    String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
+    String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
+    
     @FXML
     private TextField name;
+    
+    @FXML
+    private Label invalidDetails;
     
     @FXML
     private TextField phone;
@@ -54,15 +65,13 @@ public class SignupController implements Initializable {
     @FXML
     private TextField label1;
     
-    @FXML
-    private CheckBox passv;
-    
     private Stage stage;
     private Scene scene;
     private Parent root;
     
     Connection conn = null;
     PreparedStatement pst = null;
+    ResultSet rs = null;
     
     @FXML
     private void passvisible(MouseEvent event) throws IOException {
@@ -95,22 +104,53 @@ public class SignupController implements Initializable {
     {
        conn =(Connection) mysqlconnect.ConnectDb();
        String sql="INSERT INTO signup (S_name,S_phone,S_emailid,S_pass,S_user) VALUES (?,?,?,?,?)";
+       String usernm, pswd;
+       
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
+           usernm = emailid.getText();
+            pswd = pass.getText();
            pst.setString(1, name.getText());
            pst.setString(2, phone.getText());
            pst.setString(3, emailid.getText());
            pst.setString(4, pass.getText());
            pst.setString(5, (String) user.getValue());
-           pst.execute();           
-           JOptionPane.showMessageDialog(null,"Congratulations, Your account has been successfully created.","Success",JOptionPane.INFORMATION_MESSAGE);
-           
-           root = FXMLLoader.load(getClass().getResource("signin.fxml"));
-           stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-           scene = new Scene(root);
-           stage.setScene(scene);
-           stage.show();
+           rs = pst.executeQuery();
+           if(rs.next()){
+            JOptionPane.showMessageDialog(null,"Congratulations, Your account has been successfully created.","Success",JOptionPane.INFORMATION_MESSAGE);
+
+            root = FXMLLoader.load(getClass().getResource("signin.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+           }
+           else{
+               if(usernm.isEmpty() && pswd.isEmpty()){
+                   invalidDetails.setText("The Login fields are required!");
+                    emailid.setStyle(errorStyle);
+                    pass.setStyle(errorStyle);
+                    
+                    new animatefx.animation.Shake(emailid).play();
+                    new animatefx.animation.Shake(pass).play();
+               }else // When only the username is blank
+                if (usernm.isEmpty()) {
+                        emailid.setStyle(errorStyle);
+                        invalidDetails.setText("The Username or Email is required!");
+                        pass.setStyle(successStyle);
+                        new animatefx.animation.Shake(emailid).play();
+                        
+                }else // When only the password is blank
+                if (pswd.isEmpty()) {
+                        pass.setStyle(errorStyle);
+                        invalidDetails.setText("The Password is required!");
+                        emailid.setStyle(successStyle);
+                        new animatefx.animation.Shake(pass).play();
+                        
+                }
+               
+           }
        }
        catch(HeadlessException | SQLException e)
        {

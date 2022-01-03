@@ -17,20 +17,20 @@
             <Image url="@A/sign%20up.png" />
          </image>
       </ImageView>
-      <Label layoutX="177.0" layoutY="211.0" text="Name:">
+      <Label layoutX="177.0" layoutY="217.0" text="Name:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
       <TextField fx:id="name" layoutX="177.0" layoutY="249.0" prefHeight="33.0" prefWidth="346.0" />
       <TextField fx:id="phone" layoutX="177.0" layoutY="344.0" prefHeight="33.0" prefWidth="346.0" />
-      <Label layoutX="178.0" layoutY="311.0" text="Phone No.:">
+      <Label layoutX="169.0" layoutY="310.0" text="Phone No.:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
       <TextField fx:id="emailid" layoutX="177.0" layoutY="442.0" prefHeight="33.0" prefWidth="346.0" />
-      <Label layoutX="178.0" layoutY="398.0" text="Email ID">
+      <Label layoutX="171.0" layoutY="402.0" text="Email ID">
          <font>
             <Font size="16.0" />
          </font>
@@ -41,7 +41,7 @@
             <Image url="@A/back.png" />
          </image>
       </ImageView>
-      <Label layoutX="183.0" layoutY="495.0" text="Password">
+      <Label layoutX="174.0" layoutY="509.0" text="Password">
          <font>
             <Font size="16.0" />
          </font>
@@ -59,5 +59,6 @@
       </ImageView>
       <TextField fx:id="label1" layoutX="180.0" layoutY="541.0" prefHeight="33.0" prefWidth="316.0" />
       <PasswordField fx:id="pass" layoutX="180.0" layoutY="542.0" prefHeight="33.0" prefWidth="316.0" />
+      <Label fx:id="invalidDetails" layoutX="177.0" layoutY="485.0" prefHeight="32.0" prefWidth="346.0" />
    </children>
 </AnchorPane>

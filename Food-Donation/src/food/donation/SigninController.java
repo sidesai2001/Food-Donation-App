@@ -7,7 +7,6 @@ package food.donation;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import static com.sun.javafx.fxml.expression.Expression.not;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -19,14 +18,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import static javax.lang.model.type.TypeKind.NULL;
 import javax.swing.JOptionPane;
 
 /**
@@ -185,7 +182,7 @@ public class SigninController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //validationSupport.registerValidator(emailid, Validator.createEmptyV alidator("Enter email Id"));
+        
     }    
     
 }
