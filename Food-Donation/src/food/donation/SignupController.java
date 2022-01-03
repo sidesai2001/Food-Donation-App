@@ -18,11 +18,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -60,7 +60,13 @@ public class SignupController implements Initializable {
     private PasswordField pass;
     
     @FXML
+    private Label invalidDetails1;
+    
+    @FXML
     private ChoiceBox user;
+    
+    @FXML
+    private ImageView passicon;
     
     @FXML
     private TextField label1;
@@ -116,7 +122,7 @@ public class SignupController implements Initializable {
            pst.setString(3, emailid.getText());
            pst.setString(4, pass.getText());
            pst.setString(5, (String) user.getValue());
-           rs = pst.executeQuery();
+           pst.executeUpdate();
            if(rs.next()){
             JOptionPane.showMessageDialog(null,"Congratulations, Your account has been successfully created.","Success",JOptionPane.INFORMATION_MESSAGE);
 
@@ -154,7 +160,22 @@ public class SignupController implements Initializable {
        }
        catch(HeadlessException | SQLException e)
        {
-           JOptionPane.showMessageDialog(null, e);
+           invalidDetails1.setText("All fields are required!");
+           invalidDetails1.setStyle(errorMessage);
+           name.setStyle(errorStyle);
+           phone.setStyle(errorStyle);
+           emailid.setStyle(errorStyle);
+           pass.setStyle(errorStyle);
+           user.setStyle(errorStyle);
+           label1.setStyle(errorStyle);
+           new animatefx.animation.Shake(name).play();
+           new animatefx.animation.Shake(passicon).play();
+           new animatefx.animation.Shake(emailid).play();
+           new animatefx.animation.Shake(phone).play();
+           new animatefx.animation.Shake(pass).play();
+           new animatefx.animation.Shake(user).play();
+           new animatefx.animation.Shake(label1).play();
+           
        }
     }
     

@@ -35,7 +35,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="335.0" layoutY="607.0" mnemonicParsing="false" onMouseClicked="#signupbuttonAction" text="Signup" />
+      <Button layoutX="335.0" layoutY="613.0" mnemonicParsing="false" onMouseClicked="#signupbuttonAction" text="Signup" />
       <ImageView fitHeight="81.0" fitWidth="71.0" layoutX="-17.0" layoutY="-4.0" onMouseClicked="#backbuttonAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@A/back.png" />
@@ -46,13 +46,13 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="580.0" layoutY="282.0" text="Choose User:">
+      <Label layoutX="659.0" layoutY="205.0" text="Choose User:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="user" layoutX="580.0" layoutY="310.0" prefWidth="150.0" />
-      <ImageView fitHeight="28.0" fitWidth="46.0" layoutX="488.0" layoutY="548.0" onMouseClicked="#passvisible" pickOnBounds="true" preserveRatio="true">
+      <ChoiceBox fx:id="user" layoutX="659.0" layoutY="235.0" prefWidth="150.0" />
+      <ImageView fx:id="passicon" fitHeight="28.0" fitWidth="46.0" layoutX="488.0" layoutY="548.0" onMouseClicked="#passvisible" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@A/pass.png" />
          </image>
@@ -60,5 +60,6 @@
       <TextField fx:id="label1" layoutX="180.0" layoutY="541.0" prefHeight="33.0" prefWidth="316.0" />
       <PasswordField fx:id="pass" layoutX="180.0" layoutY="542.0" prefHeight="33.0" prefWidth="316.0" />
       <Label fx:id="invalidDetails" layoutX="177.0" layoutY="485.0" prefHeight="32.0" prefWidth="346.0" />
+      <Label fx:id="invalidDetails1" layoutX="177.0" layoutY="587.0" prefHeight="32.0" prefWidth="346.0" />
    </children>
 </AnchorPane>
