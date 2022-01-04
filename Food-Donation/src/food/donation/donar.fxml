@@ -82,7 +82,10 @@
                   <TableColumn fx:id="status" minWidth="0.0" prefWidth="97.0" text="Status" />
                </columns>
             </TableView>
-            <Label fx:id="name" layoutX="729.0" layoutY="142.0" prefHeight="54.0" prefWidth="332.0" />
+            <Label fx:id="name" layoutX="729.0" layoutY="142.0" prefHeight="54.0" prefWidth="332.0">
+               <font>
+                  <Font size="27.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </children>

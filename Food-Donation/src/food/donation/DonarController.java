@@ -148,6 +148,7 @@ public class DonarController implements Initializable {
     {
         if(historytb.isVisible() == false)
         {
+            name.setVisible(false);
             historytb.setVisible(true);
             conn =(Connection) mysqlconnect.ConnectDb();
        String sql="SELECT * FROM donor_food WHERE S_name=?";
@@ -183,6 +184,7 @@ public class DonarController implements Initializable {
             
         }
         else{
+            name.setVisible(true);
             historytb.setVisible(false);
             historytb.getItems().clear();
         }
@@ -254,6 +256,8 @@ public class DonarController implements Initializable {
        quantity1.setCellValueFactory(new PropertyValueFactory<Food, String>("quantity"));
        add.setCellValueFactory(new PropertyValueFactory<Food, String>("address"));
        date1.setCellValueFactory(new PropertyValueFactory<Food, String>("date"));
+       
+       name.setText(username);
        
     }
     

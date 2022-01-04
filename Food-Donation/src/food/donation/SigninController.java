@@ -72,6 +72,8 @@ public class SigninController implements Initializable {
     private Scene scene;
     private Parent root;
     
+    String username=FoodDonation.getUser();
+    
     @FXML
     private void toLoginAction(MouseEvent event) throws IOException {
         

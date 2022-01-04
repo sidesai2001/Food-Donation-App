@@ -101,9 +101,5 @@ public class Food {
         this.date = date;
     }
 
-    boolean getname() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     
 }
