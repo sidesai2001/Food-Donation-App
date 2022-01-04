@@ -89,7 +89,7 @@ public class VolunteerController implements Initializable {
         {
             volunteertb.setVisible(true);
             conn =(Connection) mysqlconnect.ConnectDb();
-       String sql="SELECT * FROM donor_food ";
+       String sql="SELECT * FROM donor_food WHERE status='Not Collected'";
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
@@ -144,7 +144,7 @@ public class VolunteerController implements Initializable {
            pst.setString(6, date1.getCellData(selectedID));
            pst.setString(7, status.getCellData(selectedID));
            pst.execute();   
-           volunteertb.refresh();
+           JOptionPane.showMessageDialog(null, "Status updated to Collected successfully");
        }
        catch(HeadlessException | SQLException e)
        {
