@@ -129,20 +129,20 @@ public class VolunteerController implements Initializable {
     @FXML
     private void collectionbt(MouseEvent event) throws IOException 
     {
-        int selectedID = volunteertb.getSelectionModel().getSelectedIndex();
-       Food f= volunteertb.getSelectionModel().getSelectedItems().get(selectedID);
+       int selectedID = volunteertb.getSelectionModel().getSelectedIndex();
+       volunteertb.getSelectionModel().getSelectedItems().get(selectedID);
        conn =(Connection) mysqlconnect.ConnectDb();
-       String sql="UPDATE donor_food SET status='Collected' where S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=?";
+       String sql="UPDATE donor_food SET status='Collected' where S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=? and status=?";
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
-           pst.setString(1, f.getName());
-           pst.setString(2, f.getSrnumber());
-           pst.setString(3, f.getFoodname());
-           pst.setString(4, f.getQuantity());
-           pst.setString(5, f.getAddress());
-           pst.setString(6, f.getDate());
-           pst.setString(7, f.getStatus());
+           pst.setString(1, name1.getCellData(selectedID));
+           pst.setString(2, srnumber.getCellData(selectedID));
+           pst.setString(3, foodname.getCellData(selectedID));
+           pst.setString(4, quantity1.getCellData(selectedID));
+           pst.setString(5, add.getCellData(selectedID));
+           pst.setString(6, date1.getCellData(selectedID));
+           pst.setString(7, status.getCellData(selectedID));
            pst.execute();   
            volunteertb.refresh();
        }
