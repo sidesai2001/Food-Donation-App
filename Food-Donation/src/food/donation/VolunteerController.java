@@ -97,7 +97,7 @@ public class VolunteerController implements Initializable {
            rs = pst.executeQuery();
            while(rs.next())
            {
-                Food historyf = new Food(rs.getString("S_name"),rs.getString("Srno"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Collection_date"),rs.getString("Address"),rs.getString("Status"));
+                Food historyf = new Food(rs.getString("S_name"),rs.getString("Srno"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Address"),rs.getString("Collection_date"),rs.getString("Status"));
                 ObservableList<Food> list = volunteertb.getItems();
                 list.add(historyf );
                 volunteertb.setItems(list);   
@@ -127,13 +127,24 @@ public class VolunteerController implements Initializable {
     }
     
     @FXML
-    private void collectionbt(MouseEvent event) throws IOException {
+    private void collectionbt(MouseEvent event) throws IOException 
+    {
+        int selectedID = volunteertb.getSelectionModel().getSelectedIndex();
+       Food f= volunteertb.getSelectionModel().getSelectedItems().get(selectedID);
        conn =(Connection) mysqlconnect.ConnectDb();
-       String sql="UPDATE donor_food SET status='Collected'";
+       String sql="UPDATE donor_food SET status='Collected' where S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=?";
        try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
-           pst.execute();            
+           pst.setString(1, f.getName());
+           pst.setString(2, f.getSrnumber());
+           pst.setString(3, f.getFoodname());
+           pst.setString(4, f.getQuantity());
+           pst.setString(5, f.getAddress());
+           pst.setString(6, f.getDate());
+           pst.setString(7, f.getStatus());
+           pst.execute();   
+           volunteertb.refresh();
        }
        catch(HeadlessException | SQLException e)
        {
