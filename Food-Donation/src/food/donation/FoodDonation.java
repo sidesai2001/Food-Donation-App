@@ -19,10 +19,14 @@ import javafx.stage.StageStyle;
  */
 public class FoodDonation extends Application {
     
+    public static Boolean isSplashLoaded = false;
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("signin.fxml"));
         //stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Food Donation");
+        stage.setResizable(false);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

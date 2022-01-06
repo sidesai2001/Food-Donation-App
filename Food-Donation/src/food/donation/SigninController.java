@@ -7,10 +7,14 @@ package food.donation;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+import java.awt.SplashScreen;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,7 +27,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,9 +47,6 @@ public class SigninController implements Initializable {
     String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
     
     @FXML
-    private Button login;
-    
-    @FXML
     private Label invalidDetails;
 
     @FXML
@@ -54,6 +57,9 @@ public class SigninController implements Initializable {
 
     @FXML
     private PasswordField pass;
+    
+    @FXML
+    private AnchorPane root1;
 
     @FXML
     private TextField emailid;
@@ -87,7 +93,7 @@ public class SigninController implements Initializable {
             pst = (PreparedStatement) conn.prepareStatement(sql);
             usernm = emailid.getText();
             pswd = pass.getText();
-                      pst.setString(1, usernm);
+            pst.setString(1, usernm);
             pst.setString(2, pswd);
             rs = pst.executeQuery();
             if(rs.next()){
@@ -99,7 +105,6 @@ public class SigninController implements Initializable {
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
-			stage.setResizable(false);
 			stage.show();
                     }
                     else
@@ -109,7 +114,6 @@ public class SigninController implements Initializable {
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
-			stage.setResizable(false);
 			stage.show();
                     }
 				
@@ -184,11 +188,52 @@ public class SigninController implements Initializable {
         
     }
     
+    private void splashScreen()
+    {
+        try {
+            FoodDonation.isSplashLoaded = true;
+            
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(("SplashScreen.fxml")));
+            root1.getChildren().setAll(pane);
+            
+            
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(5), pane);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
+            fadeIn.play();
+            
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), pane);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
+            fadeOut.play();
+            
+            fadeIn.setOnFinished((e)->{
+               fadeOut.play(); 
+            });
+            
+            fadeOut.setOnFinished((e)-> {
+                try {
+                    AnchorPane parentc = FXMLLoader.load(getClass().getResource(("signin.fxml")));
+                    root1.getChildren().setAll(parentc);
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(SigninController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            
+        } catch (IOException ex) {
+            Logger.getLogger(SigninController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-    }    
+        if (!FoodDonation.isSplashLoaded){
+            splashScreen();
+        }
+    }
     
 }
