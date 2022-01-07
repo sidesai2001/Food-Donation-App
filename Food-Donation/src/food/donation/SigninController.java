@@ -193,17 +193,17 @@ public class SigninController implements Initializable {
         try {
             FoodDonation.isSplashLoaded = true;
             
-            AnchorPane pane = FXMLLoader.load(getClass().getResource(("SplashScreen.fxml")));
-            root1.getChildren().setAll(pane);
+            AnchorPane sheet = FXMLLoader.load(getClass().getResource(("SplashScreen.fxml")));
+            root1.getChildren().setAll(sheet);
             
             
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(5), pane);
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(5), sheet);
             fadeIn.setFromValue(0);
             fadeIn.setToValue(1);
             fadeIn.setCycleCount(1);
             fadeIn.play();
             
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), pane);
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), sheet);
             fadeOut.setFromValue(1);
             fadeOut.setToValue(0);
             fadeOut.setCycleCount(1);
