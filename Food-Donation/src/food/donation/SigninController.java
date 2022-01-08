@@ -197,13 +197,13 @@ public class SigninController implements Initializable {
             root1.getChildren().setAll(sheet);
             
             
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(5), sheet);
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(8), sheet);
             fadeIn.setFromValue(0);
             fadeIn.setToValue(1);
             fadeIn.setCycleCount(1);
             fadeIn.play();
             
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), sheet);
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(8), sheet);
             fadeOut.setFromValue(1);
             fadeOut.setToValue(0);
             fadeOut.setCycleCount(1);
