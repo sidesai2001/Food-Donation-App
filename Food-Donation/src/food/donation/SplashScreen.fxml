@@ -8,7 +8,7 @@
    <children>
       <ImageView fitHeight="699.0" fitWidth="980.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@A/splash%20screen.png" />
+            <Image url="@A/splash%20screen.jpg" />
          </image>
       </ImageView>
    </children>
