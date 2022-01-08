@@ -127,13 +127,15 @@ public class SignupController implements Initializable {
                                 "A-Z]{2,7}$";                
             Pattern pat = Pattern.compile(emailRegex);
   
-           pst.setString(1, uname);
-           pst.setString(2, ph);
-           pst.setString(3, email);
-           pst.setString(4, pswd);
-           pst.setString(5, us);
-           JOptionPane.showMessageDialog(null,"ERROR123","Success",JOptionPane.INFORMATION_MESSAGE);
+           pst.setString(1, name.getText());
+           pst.setString(2, phone.getText());
+           pst.setString(3, emailid.getText());
+           pst.setString(4, pass.getText());
+           pst.setString(5, (String) user.getValue());
+           pst.execute();
            rs = pst.executeQuery();
+           JOptionPane.showMessageDialog(null,"ERROR123","Success",JOptionPane.INFORMATION_MESSAGE);
+           
            JOptionPane.showMessageDialog(null,"ERROR8567","Success",JOptionPane.INFORMATION_MESSAGE);
            
            if(uname.isEmpty() && pswd.isEmpty() && email.isEmpty() && ph.isEmpty() && us.isEmpty()){
