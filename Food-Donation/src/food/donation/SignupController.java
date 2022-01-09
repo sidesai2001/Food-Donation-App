@@ -109,7 +109,48 @@ public class SignupController implements Initializable {
     @FXML
     private void signupbuttonAction(MouseEvent event) throws IOException 
      {
+         
        conn =(Connection) mysqlconnect.ConnectDb();
+       String uname = name.getText();
+       String ph = phone.getText();
+       String email =  emailid.getText();
+       String pswd = pass.getText();
+       String us = (String)user.getValue();
+       JOptionPane.showMessageDialog(null, uname);
+       JOptionPane.showMessageDialog(null, ph);
+       JOptionPane.showMessageDialog(null, email);
+       JOptionPane.showMessageDialog(null, pswd);
+       JOptionPane.showMessageDialog(null, us);
+       int c=0;
+       if(uname.isEmpty() && pswd.isEmpty() && email.isEmpty() && ph.isEmpty()){
+       if(uname.isEmpty() )
+       {
+                   invalidDetails.setText("The Username is required!");
+                   name.setStyle(errorStyle);
+                   new animatefx.animation.Shake(name).play();
+              } // When only the username is blank
+                if (pswd.isEmpty()) {
+                    invalidDetails.setText("The Password is required!");
+                    pass.setStyle(errorStyle);
+                    new animatefx.animation.Shake(pass).play();
+                        
+                }// When only the password is blank
+                    if(email.isEmpty())
+                    {
+                        invalidDetails.setText("The email ID is required!");
+                        emailid.setStyle(errorStyle);
+                        new animatefx.animation.Shake(emailid).play();  
+                    }
+                    
+                if (ph.isEmpty()) 
+                {
+                    invalidDetails.setText("The Phone number is required!");
+                    phone.setStyle(errorStyle);
+                    new animatefx.animation.Shake(phone).play();
+                    
+                }
+       }
+       else{
        String sql="INSERT INTO signup (S_name,S_phone,S_emailid,S_pass,S_user) VALUES (?,?,?,?,?)";
        try
        {
@@ -119,7 +160,8 @@ public class SignupController implements Initializable {
            pst.setString(3, emailid.getText());
            pst.setString(4, pass.getText());
            pst.setString(5, (String) user.getValue());
-           pst.execute();           
+           pst.execute();   
+           
            JOptionPane.showMessageDialog(null,"Congratulations, Your account has been successfully created.","Success",JOptionPane.INFORMATION_MESSAGE);
            
            root = FXMLLoader.load(getClass().getResource("signin.fxml"));
@@ -131,8 +173,8 @@ public class SignupController implements Initializable {
        catch(HeadlessException | SQLException e)
        {
            JOptionPane.showMessageDialog(null, e);
+       }}
        }
-    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
