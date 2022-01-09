@@ -43,7 +43,7 @@ public class SignupController implements Initializable {
     String successMessage = String.format("-fx-text-fill: GREEN;");
     String errorMessage = String.format("-fx-text-fill: RED;");
     String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
-    String successStyle = String.format("-fx-border-color: #A9A9A9; -fx-border-width: 2; -fx-border-radius: 5;");
+    String successStyle = String.format("-fx-border-color: GREEN; -fx-border-width: 2; -fx-border-radius: 5;");
     
     @FXML
     private TextField name;
@@ -138,6 +138,7 @@ public class SignupController implements Initializable {
                    new animatefx.animation.Shake(name).play();
                    c++;
               } // When only the username is blank
+            else{nameerr.setText("");name.setStyle(successStyle);}
                 if (pswd.isEmpty()) {
                     passerr.setText("The Password is required!");
                     pass.setStyle(errorStyle);
@@ -145,6 +146,7 @@ public class SignupController implements Initializable {
                     new animatefx.animation.Shake(pass).play();
                         c++;
                 }// When only the password is blank
+                else{passerr.setText("");pass.setStyle(successStyle);}
                     if(email.isEmpty())
                     {
                         emailrr.setText("The email ID is required!");
@@ -152,7 +154,7 @@ public class SignupController implements Initializable {
                         emailrr.setStyle(errorMessage);
                         new animatefx.animation.Shake(emailid).play();  
                         c++;
-                    }
+                    }else{emailrr.setText("");emailid.setStyle(successStyle);}
                     
                 if (ph.isEmpty()) 
                 {
@@ -161,14 +163,14 @@ public class SignupController implements Initializable {
                     phonerr.setStyle(errorMessage);
                     new animatefx.animation.Shake(phone).play();
                     c++;
-                }
+                }else{phonerr.setText("");phone.setStyle(successStyle);}
                 if (us==null) {
                     userrr.setText("The user is required!");
                     user.setStyle(errorStyle);
                     userrr.setStyle(errorMessage);
                     new animatefx.animation.Shake(user).play();
                     c++;
-                }   
+                }  else{userrr.setText("");user.setStyle(successStyle);} 
                 if(c==5)
                 {
                     nameerr.setText("");
@@ -192,24 +194,33 @@ public class SignupController implements Initializable {
                      phonerr.setStyle(errorMessage);
                      phonerr.setText("Enter valid phone number");
                      
-                }
+                }else{phonerr.setText("");phone.setStyle(successStyle);}
                 if(pswd.length()<=4)
                 {
                      pass.setStyle(errorStyle);
                      new animatefx.animation.Shake(pass).play();
                      passerr.setStyle(errorMessage);
                      passerr.setText("Password must be more than 4 characters");
-                }
+                }else{passerr.setText("");
+                pass.setStyle(successStyle);}
                 if(!email.contains("@gmail.com"))
                 {
                      emailid.setStyle(errorStyle);
                      new animatefx.animation.Shake(emailid).play();
                      emailrr.setStyle(errorMessage);
                      emailrr.setText("Enter valid email ID!");
+                }else{emailrr.setText("");
+                emailid.setStyle(successStyle);
                 }
 
             }
             else{
+                    nameerr.setText("");
+                    phonerr.setText("");
+                    userrr.setText("");
+                    passerr.setText("");
+                    emailrr.setText("");
+                    
                     String sql="INSERT INTO signup (S_name,S_phone,S_emailid,S_pass,S_user) VALUES (?,?,?,?,?)";
                     try
                     {
