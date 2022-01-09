@@ -122,11 +122,6 @@ public class SignupController implements Initializable {
                                 "A-Z]{2,7}$";                
             Pattern pat = Pattern.compile(emailRegex);
        int c=0;
-       if(pat.matcher(email).matches() == false){
-           invalidDetails.setText("Enter correct email ID!");
-                        emailid.setStyle(errorStyle);
-                        new animatefx.animation.Shake(emailid).play();  
-       }
        
        if(uname.isEmpty() || pswd.isEmpty() || email.isEmpty() || ph.isEmpty())
        {
@@ -143,16 +138,13 @@ public class SignupController implements Initializable {
                     new animatefx.animation.Shake(pass).play();
                         c++;
                 }// When only the password is blank
-                    if(email.isEmpty() && pat.matcher(email).matches() == false)
+                    if(email.isEmpty())
                     {
                         invalidDetails.setText("The email ID is required!");
                         emailid.setStyle(errorStyle);
                         new animatefx.animation.Shake(emailid).play();  
                         c++;
-                    }else{invalidDetails.setText("Enter correct email ID!");
-                        emailid.setStyle(errorStyle);
-                        new animatefx.animation.Shake(emailid).play();  
-                        c++;}
+                    }
                     
                 if (ph.isEmpty()) 
                 {
