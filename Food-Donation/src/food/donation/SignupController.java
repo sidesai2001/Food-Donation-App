@@ -116,11 +116,7 @@ public class SignupController implements Initializable {
        String email =  emailid.getText();
        String pswd = pass.getText();
        String us = (String)user.getValue();
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                                "[a-zA-Z0-9_+&*-]+)*@" +
-                                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                                "A-Z]{2,7}$";                
-            Pattern pat = Pattern.compile(emailRegex);
+       
        int c=0;
        
        if(uname.isEmpty() || pswd.isEmpty() || email.isEmpty() || ph.isEmpty())
@@ -166,6 +162,32 @@ public class SignupController implements Initializable {
                 
        }
        else{
+           //pass 4 dig
+           //number 10 number
+           //email @gmail
+           if(ph.length()!=10 || pswd.length()<4 || !email.contains("@gmail.com"))
+           {
+               if(ph.length()!=10)
+               {
+                    phone.setStyle(errorStyle);
+                    new animatefx.animation.Shake(phone).play();
+                    invalidDetails.setText("Enter valid phone number");
+               }
+               if(pswd.length()<=4)
+               {
+                    pass.setStyle(errorStyle);
+                    new animatefx.animation.Shake(pass).play();
+                    invalidDetails.setText("Password must be more than 4 characters");
+               }
+               if(!email.contains("@gmail.com"))
+               {
+                    emailid.setStyle(errorStyle);
+                    new animatefx.animation.Shake(emailid).play();
+                    invalidDetails.setText("Enter valid email ID!");
+               }
+               
+           }
+            else{
        String sql="INSERT INTO signup (S_name,S_phone,S_emailid,S_pass,S_user) VALUES (?,?,?,?,?)";
        try
        {
@@ -185,12 +207,14 @@ public class SignupController implements Initializable {
            stage.setScene(scene);
            stage.show();
        }
+           }    
        catch(HeadlessException | SQLException e)
        {
            JOptionPane.showMessageDialog(null, e);
        }
        }
-       }
+     }
+       
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
