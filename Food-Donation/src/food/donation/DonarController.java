@@ -29,6 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -45,9 +46,6 @@ public class DonarController implements Initializable {
      */
     
     @FXML
-    private Button foodde;
-    
-    @FXML
     private TextField quantity;
     
     @FXML
@@ -60,7 +58,16 @@ public class DonarController implements Initializable {
     private TextField srno;
     
     @FXML
-    private Button history;
+    private ImageView history;
+
+    @FXML
+    private ImageView submit;
+
+    @FXML
+    private ImageView remove;
+
+    @FXML
+    private ImageView foodde;
     
     @FXML
     private Label name;
@@ -91,7 +98,6 @@ public class DonarController implements Initializable {
 
     @FXML
     private TableColumn<Food, String> status;
-
 
     @FXML
     private TableView<Food> tableview;

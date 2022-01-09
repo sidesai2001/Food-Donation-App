@@ -8,41 +8,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root1" prefHeight="699.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="food.donation.SigninController">
+<AnchorPane fx:id="root1" prefHeight="856.0" prefWidth="1192.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="food.donation.SigninController">
    <children>
-      <ImageView fitHeight="699.0" fitWidth="980.0" layoutY="-1.0" pickOnBounds="true">
+      <ImageView fitHeight="856.0" fitWidth="1192.0" layoutY="-1.0" pickOnBounds="true">
          <image>
             <Image url="@A/l.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="usersIcon" fitHeight="50.0" fitWidth="46.0" layoutX="231.0" layoutY="452.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="usersIcon" fitHeight="65.0" fitWidth="59.0" layoutX="277.0" layoutY="558.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@A/users.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="passwordIcon" fitHeight="46.0" fitWidth="46.0" layoutX="231.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="passwordIcon" fitHeight="59.0" fitWidth="59.0" layoutX="277.0" layoutY="674.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@A/lock.png" />
          </image>
       </ImageView>
-      <TextField fx:id="emailid" layoutX="298.0" layoutY="463.0" prefHeight="25.0" prefWidth="346.0" promptText="Email ID" />
-      <Label fx:id="invalidDetails" layoutX="289.0" layoutY="513.0" prefHeight="25.0" prefWidth="383.0" />
-      <ImageView fitHeight="154.0" fitWidth="154.0" layoutX="413.0" layoutY="620.0" onMouseClicked="#toLoginAction" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="emailid" layoutX="359.0" layoutY="561.0" prefHeight="50.0" prefWidth="406.0" promptText="Email ID" />
+      <Label fx:id="invalidDetails" layoutX="355.0" layoutY="628.0" prefHeight="30.0" prefWidth="430.0" />
+      <ImageView fitHeight="68.0" fitWidth="179.0" layoutX="507.0" layoutY="762.0" onMouseClicked="#toLoginAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@A/login%20(1).png" />
          </image>
       </ImageView>
-      <Label layoutX="348.0" layoutY="660.0" onMouseClicked="#signupbuttonAction" prefHeight="30.0" prefWidth="309.0" text="Don't have a account ? Sign Up">
+      <Label layoutX="443.0" layoutY="810.0" onMouseClicked="#signupbuttonAction" prefHeight="32.0" prefWidth="306.0" text="Don't have a account ? Sign Up">
          <font>
-            <Font size="18.0" />
+            <Font size="22.0" />
          </font>
       </Label>
-      <ImageView fitHeight="28.0" fitWidth="46.0" layoutX="636.0" layoutY="561.0" onMouseClicked="#passvisible" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="44.0" fitWidth="78.0" layoutX="761.0" layoutY="689.0" onMouseClicked="#passvisible" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@A/pass.png" />
          </image>
       </ImageView>
-      <TextField fx:id="label1" layoutX="298.0" layoutY="561.0" prefHeight="23.0" prefWidth="346.0" visible="false" />
-      <PasswordField fx:id="pass" layoutX="298.0" layoutY="560.0" prefHeight="25.0" prefWidth="346.0" promptText="Password" />
+      <TextField fx:id="label1" layoutX="360.0" layoutY="678.0" prefHeight="51.0" prefWidth="406.0" visible="false" />
+      <PasswordField fx:id="pass" layoutX="359.0" layoutY="678.0" prefHeight="50.0" prefWidth="406.0" promptText="Password" />
    </children>
 </AnchorPane>

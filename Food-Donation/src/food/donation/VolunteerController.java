@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -59,11 +60,14 @@ public class VolunteerController implements Initializable {
     @FXML
     private TableColumn<Food, String> date1;
 
-      @FXML
+    @FXML
     private TableColumn<Food, String> status;
+      
+    @FXML
+    private ImageView details;
 
     @FXML
-    private Button details;
+    private ImageView collection;
     
     private Stage stage;
     private Scene scene;

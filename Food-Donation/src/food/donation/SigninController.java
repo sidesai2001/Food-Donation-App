@@ -125,6 +125,7 @@ public class SigninController implements Initializable {
                     invalidDetails.setText("The Login fields are required!");
                     emailid.setStyle(errorStyle);
                     pass.setStyle(errorStyle);
+                    invalidDetails.setStyle(errorMessage);
 
                     new animatefx.animation.Shake(emailid).play();
                     new animatefx.animation.Wobble(usersIcon).play();
@@ -136,12 +137,14 @@ public class SigninController implements Initializable {
                         emailid.setStyle(errorStyle);
                         invalidDetails.setText("The Username or Email is required!");
                         pass.setStyle(successStyle);
+                        invalidDetails.setStyle(errorMessage);
                         new animatefx.animation.Shake(emailid).play();
                         new animatefx.animation.Pulse(usersIcon).play();
                 }else // When only the password is blank
                 if (pswd.isEmpty()) {
                         pass.setStyle(errorStyle);
                         invalidDetails.setText("The Password is required!");
+                        invalidDetails.setStyle(errorMessage);
                         emailid.setStyle(successStyle);
                         new animatefx.animation.Shake(pass).play();
                         new animatefx.animation.Wobble(passwordIcon).play();
@@ -198,13 +201,13 @@ public class SigninController implements Initializable {
             root1.getChildren().setAll(sheet);
             
             
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(8), sheet);
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(7), sheet);
             fadeIn.setFromValue(0);
             fadeIn.setToValue(1);
             fadeIn.setCycleCount(1);
             fadeIn.play();
             
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(8), sheet);
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(7), sheet);
             fadeOut.setFromValue(1);
             fadeOut.setToValue(0);
             fadeOut.setCycleCount(1);
