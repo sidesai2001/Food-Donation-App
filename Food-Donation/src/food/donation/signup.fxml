@@ -23,7 +23,7 @@
       </Label>
       <TextField fx:id="name" layoutX="215.0" layoutY="319.0" prefHeight="50.0" prefWidth="423.0" />
       <TextField fx:id="phone" layoutX="215.0" layoutY="440.0" prefHeight="50.0" prefWidth="423.0" />
-      <Label layoutX="205.0" layoutY="397.0" text="Phone No.:">
+      <Label layoutX="205.0" layoutY="399.0" text="Phone No.:">
          <font>
             <Font size="23.0" />
          </font>
@@ -34,7 +34,7 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <ImageView fitHeight="81.0" fitWidth="71.0" layoutX="-17.0" layoutY="-4.0" onMouseClicked="#backbuttonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="97.0" fitWidth="96.0" layoutX="-29.0" onMouseClicked="#backbuttonAction" pickOnBounds="true">
          <image>
             <Image url="@A/back.png" />
          </image>
@@ -55,14 +55,17 @@
             <Image url="@A/pass.png" />
          </image>
       </ImageView>
-      <TextField fx:id="label1" layoutX="215.0" layoutY="695.0" prefHeight="50.0" prefWidth="381.0" />
-      <PasswordField fx:id="pass" layoutX="215.0" layoutY="695.0" prefHeight="50.0" prefWidth="381.0" />
-      <Label fx:id="invalidDetails" layoutX="189.0" layoutY="509.0" prefHeight="32.0" prefWidth="346.0" />
-      <Label fx:id="invalidDetails1" layoutX="773.0" layoutY="458.0" prefHeight="32.0" prefWidth="346.0" />
+      <TextField fx:id="label1" layoutX="215.0" layoutY="695.0" prefHeight="50.0" prefWidth="381.0" visible="false" />
+      <Label fx:id="nameerr" layoutX="205.0" layoutY="379.0" prefHeight="32.0" prefWidth="346.0" />
       <ImageView fitHeight="59.0" fitWidth="158.0" layoutX="385.0" layoutY="783.0" onMouseClicked="#signupbuttonAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@A/6.png" />
          </image>
       </ImageView>
+      <PasswordField fx:id="pass" layoutX="215.0" layoutY="695.0" prefHeight="50.0" prefWidth="381.0" />
+      <Label fx:id="phonerr" layoutX="205.0" layoutY="496.0" prefHeight="32.0" prefWidth="346.0" />
+      <Label fx:id="emailrr" layoutX="205.0" layoutY="627.0" prefHeight="32.0" prefWidth="346.0" />
+      <Label fx:id="passerr" layoutX="205.0" layoutY="751.0" prefHeight="32.0" prefWidth="346.0" />
+      <Label fx:id="userrr" layoutX="832.0" layoutY="379.0" prefHeight="32.0" prefWidth="346.0" />
    </children>
 </AnchorPane>

@@ -175,6 +175,11 @@ public class SigninController implements Initializable {
     }
     
     @FXML
+    private void close(MouseEvent event) throws IOException {
+        System.exit(0);
+    }
+    
+    @FXML
     private void passvisible(MouseEvent event) throws IOException {
         if(label1.isVisible() == false)
         {

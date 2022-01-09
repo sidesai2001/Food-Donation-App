@@ -49,22 +49,31 @@ public class SignupController implements Initializable {
     private TextField name;
     
     @FXML
-    private Label invalidDetails;
+    private TextField phone;
     
     @FXML
-    private TextField phone;
+    private Label nameerr;
     
     @FXML
     private TextField emailid;
     
     @FXML
+    private Label phonerr;
+
+    @FXML
+    private Label emailrr;
+
+    @FXML
+    private Label passerr;
+    
+    @FXML
     private PasswordField pass;
     
     @FXML
-    private Label invalidDetails1;
+    private ChoiceBox user;
     
     @FXML
-    private ChoiceBox user;
+    private Label userrr;
     
     @FXML
     private ImageView passicon;
@@ -123,67 +132,80 @@ public class SignupController implements Initializable {
        {
             if(uname.isEmpty() )
             {
-                   invalidDetails.setText("The Username is required!");
+                   nameerr.setText("The Username is required!");
                    name.setStyle(errorStyle);
+                   nameerr.setStyle(errorMessage);
                    new animatefx.animation.Shake(name).play();
                    c++;
               } // When only the username is blank
                 if (pswd.isEmpty()) {
-                    invalidDetails.setText("The Password is required!");
+                    passerr.setText("The Password is required!");
                     pass.setStyle(errorStyle);
+                    passerr.setStyle(errorMessage);
                     new animatefx.animation.Shake(pass).play();
                         c++;
                 }// When only the password is blank
                     if(email.isEmpty())
                     {
-                        invalidDetails.setText("The email ID is required!");
+                        emailrr.setText("The email ID is required!");
                         emailid.setStyle(errorStyle);
+                        emailrr.setStyle(errorMessage);
                         new animatefx.animation.Shake(emailid).play();  
                         c++;
                     }
                     
                 if (ph.isEmpty()) 
                 {
-                    invalidDetails.setText("The Phone number is required!");
+                    phonerr.setText("The Phone number is required!");
                     phone.setStyle(errorStyle);
+                    phonerr.setStyle(errorMessage);
                     new animatefx.animation.Shake(phone).play();
                     c++;
                 }
                 if (us==null) {
-                    invalidDetails.setText("The user is required!");
+                    userrr.setText("The user is required!");
                     user.setStyle(errorStyle);
+                    userrr.setStyle(errorMessage);
                     new animatefx.animation.Shake(user).play();
                     c++;
                 }   
                 if(c==5)
                 {
-                    invalidDetails.setText("All the fields are required!");
+                    nameerr.setText("");
+                    phonerr.setText("");
+                    userrr.setText("");
+                    passerr.setText("");
+                    emailrr.setText("");
+                    passerr.setText("All the fields are required!");
+                    passerr.setStyle(errorMessage);
+                    
                 }
                 
        }
        else{
-            //pass 4 dig
-            //number 10 number
-            //email @gmail
             if(ph.length()!=10 || pswd.length()<4 || !email.contains("@gmail.com"))
             {
                 if(ph.length()!=10)
                 {
                      phone.setStyle(errorStyle);
                      new animatefx.animation.Shake(phone).play();
-                     invalidDetails.setText("Enter valid phone number");
+                     phonerr.setStyle(errorMessage);
+                     phonerr.setText("Enter valid phone number");
+                     
                 }
                 if(pswd.length()<=4)
                 {
                      pass.setStyle(errorStyle);
                      new animatefx.animation.Shake(pass).play();
-                     invalidDetails.setText("Password must be more than 4 characters");
+                     passerr.setStyle(errorMessage);
+                     passerr.setText("Password must be more than 4 characters");
                 }
                 if(!email.contains("@gmail.com"))
                 {
                      emailid.setStyle(errorStyle);
                      new animatefx.animation.Shake(emailid).play();
-                     invalidDetails.setText("Enter valid email ID!");
+                     emailrr.setStyle(errorMessage);
+                     emailrr.setText("Enter valid email ID!");
                 }
 
             }
