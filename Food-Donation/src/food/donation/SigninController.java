@@ -193,6 +193,7 @@ public class SigninController implements Initializable {
         try {
             FoodDonation.isSplashLoaded = true;
             
+            
             AnchorPane sheet = FXMLLoader.load(getClass().getResource(("SplashScreen.fxml")));
             root1.getChildren().setAll(sheet);
             

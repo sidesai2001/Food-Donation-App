@@ -108,12 +108,54 @@ public class SignupController implements Initializable {
     
     @FXML
     private void signupbuttonAction(MouseEvent event) throws IOException 
-    {
+     {
        conn =(Connection) mysqlconnect.ConnectDb();
        String sql="INSERT INTO signup (S_name,S_phone,S_emailid,S_pass,S_user) VALUES (?,?,?,?,?)";
-       String uname, pswd, email, ph, us;
-       
        try
+       {
+           pst = (PreparedStatement) conn.prepareStatement(sql);
+           pst.setString(1, name.getText());
+           pst.setString(2, phone.getText());
+           pst.setString(3, emailid.getText());
+           pst.setString(4, pass.getText());
+           pst.setString(5, (String) user.getValue());
+           pst.execute();           
+           JOptionPane.showMessageDialog(null,"Congratulations, Your account has been successfully created.","Success",JOptionPane.INFORMATION_MESSAGE);
+           
+           root = FXMLLoader.load(getClass().getResource("signin.fxml"));
+           stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+           scene = new Scene(root);
+           stage.setScene(scene);
+           stage.show();
+       }
+       catch(HeadlessException | SQLException e)
+       {
+           JOptionPane.showMessageDialog(null, e);
+       }
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        user.getItems().add("Donor");
+        user.getItems().add("Volunteer");
+        
+        
+    }    
+    
+}
+
+
+
+
+
+
+
+
+
+
+/*
+ try
        {
            pst = (PreparedStatement) conn.prepareStatement(sql);
            uname = name.getText();
@@ -207,22 +249,4 @@ public class SignupController implements Initializable {
             stage.show();
                
            }
-       }
-       catch(HeadlessException | SQLException e)
-       {
-           JOptionPane.showMessageDialog(null,"ERROR","Success",JOptionPane.INFORMATION_MESSAGE);   
-       }
-    }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        user.getItems().add("Donor");
-        user.getItems().add("Volunteer");
-        
-        
-    }    
-    
-}
-
-
+       }*/
