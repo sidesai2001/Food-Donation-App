@@ -116,39 +116,62 @@ public class SignupController implements Initializable {
        String email =  emailid.getText();
        String pswd = pass.getText();
        String us = (String)user.getValue();
-       JOptionPane.showMessageDialog(null, uname);
-       JOptionPane.showMessageDialog(null, ph);
-       JOptionPane.showMessageDialog(null, email);
-       JOptionPane.showMessageDialog(null, pswd);
-       JOptionPane.showMessageDialog(null, us);
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                                "[a-zA-Z0-9_+&*-]+)*@" +
+                                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                                "A-Z]{2,7}$";                
+            Pattern pat = Pattern.compile(emailRegex);
        int c=0;
-       if(uname.isEmpty() && pswd.isEmpty() && email.isEmpty() && ph.isEmpty()){
-       if(uname.isEmpty() )
+       if(pat.matcher(email).matches() == false){
+           invalidDetails.setText("Enter correct email ID!");
+                        emailid.setStyle(errorStyle);
+                        new animatefx.animation.Shake(emailid).play();  
+       }
+       
+       if(uname.isEmpty() || pswd.isEmpty() || email.isEmpty() || ph.isEmpty())
        {
+            if(uname.isEmpty() )
+            {
                    invalidDetails.setText("The Username is required!");
                    name.setStyle(errorStyle);
                    new animatefx.animation.Shake(name).play();
+                   c++;
               } // When only the username is blank
                 if (pswd.isEmpty()) {
                     invalidDetails.setText("The Password is required!");
                     pass.setStyle(errorStyle);
                     new animatefx.animation.Shake(pass).play();
-                        
+                        c++;
                 }// When only the password is blank
-                    if(email.isEmpty())
+                    if(email.isEmpty() && pat.matcher(email).matches() == false)
                     {
                         invalidDetails.setText("The email ID is required!");
                         emailid.setStyle(errorStyle);
                         new animatefx.animation.Shake(emailid).play();  
-                    }
+                        c++;
+                    }else{invalidDetails.setText("Enter correct email ID!");
+                        emailid.setStyle(errorStyle);
+                        new animatefx.animation.Shake(emailid).play();  
+                        c++;}
                     
                 if (ph.isEmpty()) 
                 {
                     invalidDetails.setText("The Phone number is required!");
                     phone.setStyle(errorStyle);
                     new animatefx.animation.Shake(phone).play();
-                    
+                    c++;
                 }
+                if (us==null) {
+                    invalidDetails.setText("The user is required!");
+                    user.setStyle(errorStyle);
+                    new animatefx.animation.Shake(user).play();
+                    c++;
+                }   
+                if(c==5)
+                {
+                    invalidDetails.setText("All the fields are required!");
+                }
+                
        }
        else{
        String sql="INSERT INTO signup (S_name,S_phone,S_emailid,S_pass,S_user) VALUES (?,?,?,?,?)";
@@ -173,7 +196,8 @@ public class SignupController implements Initializable {
        catch(HeadlessException | SQLException e)
        {
            JOptionPane.showMessageDialog(null, e);
-       }}
+       }
+       }
        }
     
     @Override
