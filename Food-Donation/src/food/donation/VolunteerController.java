@@ -65,6 +65,7 @@ public class VolunteerController implements Initializable
     PreparedStatement pst = null;
     
     String username = FoodDonation.getUser();
+    String phone = FoodDonation.getPhone();
 
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException 

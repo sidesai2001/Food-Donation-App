@@ -88,6 +88,7 @@ public class SigninController implements Initializable
                 if (user.equals("Donor")) 
                 {
                     FoodDonation.setUsername(rs.getString("S_name"));
+                    FoodDonation.setPhone(rs.getString("S_phone"));
                     root = FXMLLoader.load(getClass().getResource("donar.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
@@ -97,6 +98,7 @@ public class SigninController implements Initializable
                 else 
                 {
                     FoodDonation.setUsername(rs.getString("S_name"));
+                    FoodDonation.setPhone(rs.getString("S_phone"));
                     root = FXMLLoader.load(getClass().getResource("volunteer.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);

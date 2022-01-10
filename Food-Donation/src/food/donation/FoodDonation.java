@@ -25,6 +25,7 @@ public class FoodDonation extends Application
     }
 
     private static String userName;
+    private static String phone;
 
     public static void setUsername(String userName) 
     {
@@ -35,6 +36,17 @@ public class FoodDonation extends Application
     {
         return (userName);
     }
+    
+    public static void setPhone(String phone) 
+    {
+        FoodDonation.phone = phone;
+    }
+
+    public static String getPhone() 
+    {
+        return (phone);
+    }
+    
 
     public static void main(String[] args) 
     {
