@@ -221,7 +221,7 @@ public class DonarController implements Initializable
     {
         int selectedID = tableview.getSelectionModel().getSelectedIndex();
         Food f = tableview.getSelectionModel().getSelectedItems().get(selectedID);
-        tableview.getItems().remove(selectedID);
+        
         conn = (Connection) mysqlconnect.ConnectDb();
         String sql ="DELETE FROM donor_food WHERE S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=?";
         
@@ -235,6 +235,7 @@ public class DonarController implements Initializable
             pst.setString(5, f.getAddress());
             pst.setString(6, f.getDate());
             pst.execute();
+            tableview.getItems().remove(selectedID);
         } 
         catch (HeadlessException | SQLException e) 
         {
