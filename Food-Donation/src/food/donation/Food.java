@@ -1,24 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package food.donation;
-
 
 import java.sql.Date;
 import java.time.LocalDate;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
 
-
-
-
-/**
- *
- * @author Siddhant Desai
- */
-public class Food {
+public class Food 
+{
     private String name;
     private String srnumber;
     private String foodname;
@@ -27,7 +15,8 @@ public class Food {
     private String date;
     private String status;
 
-    public Food(String name,String srnumber, String foodname, String quantity, String address, String date,String status) {
+    public Food(String name,String srnumber,String foodname,String quantity,String address,String date,String status) 
+    {
         this.name = name;
         this.srnumber = srnumber;
         this.foodname = foodname;
@@ -37,69 +26,78 @@ public class Food {
         this.status = status;
     }
 
-    Food(String text, String text0, String text1, String text2, String text3, String toString) {
-       
+    Food(String text,String text0,String text1,String text2,String text3,String toString) 
+    {
+        
     }
 
-    
-
-    public String getStatus() {
+    public String getStatus() 
+    {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(String status) 
+    {
         this.status = status;
     }
 
-    public String getName() {
+    public String getName() 
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) 
+    {
         this.name = name;
     }
 
-   
-
-    public String getSrnumber() {
+    public String getSrnumber() 
+    {
         return srnumber;
     }
 
-    public void setSrnumber(String srnumber) {
+    public void setSrnumber(String srnumber) 
+    {
         this.srnumber = srnumber;
     }
 
-    public String getFoodname() {
+    public String getFoodname() 
+    {
         return foodname;
     }
 
-    public void setFoodname(String foodname) {
+    public void setFoodname(String foodname) 
+    {
         this.foodname = foodname;
     }
 
-    public String getQuantity() {
+    public String getQuantity() 
+    {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(String quantity) 
+    {
         this.quantity = quantity;
     }
 
-    public String getAddress() {
+    public String getAddress() 
+    {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address) 
+    {
         this.address = address;
     }
 
-    public String getDate() {
+    public String getDate() 
+    {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date) 
+    {
         this.date = date;
     }
-
-    
 }
