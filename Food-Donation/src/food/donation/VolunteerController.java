@@ -63,6 +63,8 @@ public class VolunteerController implements Initializable
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
+    
+    String username = FoodDonation.getUser();
 
     @FXML
     private void backbuttonAction(MouseEvent event) throws IOException 
@@ -125,18 +127,19 @@ public class VolunteerController implements Initializable
         int selectedID = volunteertb.getSelectionModel().getSelectedIndex();
         volunteertb.getSelectionModel().getSelectedItems().get(selectedID);
         conn = (Connection) mysqlconnect.ConnectDb();
-        String sql ="UPDATE donor_food SET status='Collected' where S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=? and status=?";
+        String sql ="UPDATE donor_food SET status='Collected',Volunteer=? where S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=? and status=?";
         
         try 
         {
             pst = (PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, name1.getCellData(selectedID));
-            pst.setString(2, srnumber.getCellData(selectedID));
-            pst.setString(3, foodname.getCellData(selectedID));
-            pst.setString(4, quantity1.getCellData(selectedID));
-            pst.setString(5, add.getCellData(selectedID));
-            pst.setString(6, date1.getCellData(selectedID));
-            pst.setString(7, status.getCellData(selectedID));
+            pst.setString(1, username);
+            pst.setString(2, name1.getCellData(selectedID));
+            pst.setString(3, srnumber.getCellData(selectedID));
+            pst.setString(4, foodname.getCellData(selectedID));
+            pst.setString(5, quantity1.getCellData(selectedID));
+            pst.setString(6, add.getCellData(selectedID));
+            pst.setString(7, date1.getCellData(selectedID));
+            pst.setString(8, status.getCellData(selectedID));
             pst.execute();
             JOptionPane.showMessageDialog(null,"Status updated to Collected successfully");
         } 
