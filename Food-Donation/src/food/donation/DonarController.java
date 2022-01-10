@@ -42,9 +42,6 @@ public class DonarController implements Initializable
     private DatePicker date;
 
     @FXML
-    private TextField srno;
-
-    @FXML
     private ImageView history;
 
     @FXML
@@ -69,9 +66,6 @@ public class DonarController implements Initializable
     private TableColumn<Food, String> hname;
 
     @FXML
-    private TableColumn<Food, String> hsrnumber;
-
-    @FXML
     private TableColumn<Food, String> hfoodname;
 
     @FXML
@@ -88,9 +82,6 @@ public class DonarController implements Initializable
 
     @FXML
     private TableView<Food> tableview;
-
-    @FXML
-    private TableColumn<Food, String> srnumber;
 
     @FXML
     private TableColumn<Food, String> foodname;
@@ -156,13 +147,12 @@ public class DonarController implements Initializable
                 
                 while (rs.next()) 
                 {
-                    Food historyf = new Food(rs.getString("S_name"),rs.getString("Srno"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Collection_date"),rs.getString("Address"),rs.getString("Status"));
+                    Food historyf = new Food(rs.getString("S_name"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Address"),rs.getString("Collection_date"),rs.getString("Status"));
                     ObservableList<Food> list = historytb.getItems();
                     list.add(historyf);
                     historytb.setItems(list);
 
                     hname.setCellValueFactory(new PropertyValueFactory<Food, String>("name"));
-                    hsrnumber.setCellValueFactory(new PropertyValueFactory<Food, String>("srnumber"));
                     hfoodname.setCellValueFactory(new PropertyValueFactory<Food, String>("foodname"));
                     hquantity.setCellValueFactory(new PropertyValueFactory<Food, String>("quantity"));
                     hadd.setCellValueFactory(new PropertyValueFactory<Food, String>("address"));
@@ -187,17 +177,16 @@ public class DonarController implements Initializable
     private void fooddetailsAction(MouseEvent event) throws IOException 
     {
         conn = (Connection) mysqlconnect.ConnectDb();
-        String sql ="INSERT INTO donor_food (S_name,Srno,Food_name,Number_of_packets,address,Collection_date) VALUES (?,?,?,?,?,?)";
+        String sql ="INSERT INTO donor_food (S_name,Food_name,Number_of_packets,address,Collection_date) VALUES (?,?,?,?,?,?)";
 
         try 
         {
             pst = (PreparedStatement) conn.prepareStatement(sql);
             pst.setString(1, username);
-            pst.setString(2, srno.getText());
-            pst.setString(3, foodnm.getText());
-            pst.setString(4, quantity.getText());
-            pst.setString(5, address.getText());
-            pst.setString(6, date.getValue().toString());
+            pst.setString(2, foodnm.getText());
+            pst.setString(3, quantity.getText());
+            pst.setString(4, address.getText());
+            pst.setString(5, date.getValue().toString());
             pst.execute();
         } 
         catch (HeadlessException | SQLException e) 
@@ -205,11 +194,10 @@ public class DonarController implements Initializable
             JOptionPane.showMessageDialog(null, e);
         }
 
-        Food foodadd = new Food(name.getText(),srno.getText(),foodnm.getText(),quantity.getText(),address.getText(),date.getValue().toString(),status.getText());
+        Food foodadd = new Food(name.getText(),foodnm.getText(),quantity.getText(),address.getText(),date.getValue().toString(),status.getText());
         ObservableList<Food> list = tableview.getItems();
         list.add(foodadd);
         tableview.setItems(list);
-        srno.clear();
         foodnm.clear();
         address.clear();
         quantity.clear();
@@ -223,13 +211,12 @@ public class DonarController implements Initializable
         Food f = tableview.getSelectionModel().getSelectedItems().get(selectedID);
         
         conn = (Connection) mysqlconnect.ConnectDb();
-        String sql ="DELETE FROM donor_food WHERE S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=?";
+        String sql ="DELETE FROM donor_food WHERE S_name=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=?";
         
         try 
         {
             pst = (PreparedStatement) conn.prepareStatement(sql);
             pst.setString(1, f.getName());
-            pst.setString(2, f.getSrnumber());
             pst.setString(3, f.getFoodname());
             pst.setString(4, f.getQuantity());
             pst.setString(5, f.getAddress());
@@ -247,7 +234,6 @@ public class DonarController implements Initializable
     public void initialize(URL url, ResourceBundle rb) 
     {
         name1.setCellValueFactory(new PropertyValueFactory<Food, String>("name"));
-        srnumber.setCellValueFactory(new PropertyValueFactory<Food, String>("srnumber"));
         foodname.setCellValueFactory(new PropertyValueFactory<Food, String>("foodname"));
         quantity1.setCellValueFactory(new PropertyValueFactory<Food, String>("quantity"));
         add.setCellValueFactory(new PropertyValueFactory<Food, String>("address"));

@@ -18,15 +18,14 @@
             <Image url="@A/logout.png" />
          </image>
       </ImageView>
-      <TableView fx:id="volunteertb" layoutX="373.0" layoutY="154.0" prefHeight="542.0" prefWidth="763.0">
+      <TableView fx:id="volunteertb" layoutX="350.0" layoutY="154.0" prefHeight="542.0" prefWidth="822.0">
          <columns>
-            <TableColumn fx:id="name1" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="srnumber" prefWidth="59.0" text="Sr.  No." />
-            <TableColumn fx:id="foodname" prefWidth="204.0" text="Food Name" />
-            <TableColumn fx:id="quantity1" prefWidth="66.0" text="Quantity (packets)" />
-            <TableColumn fx:id="add" prefWidth="180.0" text="Address" />
-            <TableColumn fx:id="date1" minWidth="0.0" text="Date" />
-            <TableColumn fx:id="status" minWidth="0.0" prefWidth="96.0" text="Status" />
+            <TableColumn fx:id="name1" prefWidth="109.0" text="Name" />
+            <TableColumn fx:id="foodname" prefWidth="221.0" text="Food Name" />
+            <TableColumn fx:id="quantity1" prefWidth="79.0" text="Quantity (packets)" />
+            <TableColumn fx:id="add" prefWidth="176.0" text="Address" />
+            <TableColumn fx:id="date1" minWidth="0.0" prefWidth="119.0" text="Date" />
+            <TableColumn fx:id="status" minWidth="0.0" prefWidth="117.0" text="Status" />
          </columns>
       </TableView>
       <ImageView fx:id="details" fitHeight="74.0" fitWidth="200.0" layoutX="530.0" layoutY="733.0" onMouseClicked="#detailsvisible" pickOnBounds="true" preserveRatio="true">

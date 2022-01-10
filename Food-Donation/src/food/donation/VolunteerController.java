@@ -94,13 +94,12 @@ public class VolunteerController implements Initializable
                     
                     while (rs.next()) 
                     {
-                        Food historyf = new Food(rs.getString("S_name"),rs.getString("Srno"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Address"),rs.getString("Collection_date"),rs.getString("Status"));
+                        Food historyf = new Food(rs.getString("S_name"),rs.getString("Food_name"),rs.getString("Number_of_packets"),rs.getString("Address"),rs.getString("Collection_date"),rs.getString("Status"));
                         ObservableList<Food> list = volunteertb.getItems();
                         list.add(historyf);
                         volunteertb.setItems(list);
 
                         name1.setCellValueFactory(new PropertyValueFactory<Food, String>("name"));
-                        srnumber.setCellValueFactory(new PropertyValueFactory<Food, String>("srnumber"));
                         foodname.setCellValueFactory(new PropertyValueFactory<Food, String>("foodname"));
                         quantity1.setCellValueFactory(new PropertyValueFactory<Food, String>("quantity"));
                         add.setCellValueFactory(new PropertyValueFactory<Food, String>("address"));
@@ -127,14 +126,13 @@ public class VolunteerController implements Initializable
         int selectedID = volunteertb.getSelectionModel().getSelectedIndex();
         volunteertb.getSelectionModel().getSelectedItems().get(selectedID);
         conn = (Connection) mysqlconnect.ConnectDb();
-        String sql ="UPDATE donor_food SET status='Collected',Volunteer=? where S_name=? and Srno=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=? and status=?";
+        String sql ="UPDATE donor_food SET status='Collected',Volunteer=? where S_name=? and Food_name=? and Number_of_packets=? and address=? and Collection_date=? and status=?";
         
         try 
         {
             pst = (PreparedStatement) conn.prepareStatement(sql);
             pst.setString(1, username);
             pst.setString(2, name1.getCellData(selectedID));
-            pst.setString(3, srnumber.getCellData(selectedID));
             pst.setString(4, foodname.getCellData(selectedID));
             pst.setString(5, quantity1.getCellData(selectedID));
             pst.setString(6, add.getCellData(selectedID));

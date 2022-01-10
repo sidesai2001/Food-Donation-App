@@ -18,42 +18,35 @@
             <Image url="@A/volunteer%20(2).png" />
          </image>
       </ImageView>
-      <Label layoutX="736.0" layoutY="196.0" prefHeight="25.0" prefWidth="69.0" text="Sr. No.">
+      <TextField fx:id="foodnm" layoutX="729.0" layoutY="281.0" prefHeight="54.0" prefWidth="332.0" />
+      <Label layoutX="729.0" layoutY="256.0" text="Food Name">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="srno" layoutX="729.0" layoutY="221.0" prefHeight="54.0" prefWidth="332.0" />
-      <TextField fx:id="foodnm" layoutX="729.0" layoutY="314.0" prefHeight="54.0" prefWidth="332.0" />
-      <Label layoutX="729.0" layoutY="289.0" text="Food Name">
+      <Label layoutX="729.0" layoutY="342.0" text="Quantity (Packets)">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="729.0" layoutY="368.0" text="Quantity (Packets)">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tableview" layoutX="42.0" layoutY="133.0" prefHeight="495.0" prefWidth="666.0">
+      <TableView fx:id="tableview" layoutX="93.0" layoutY="131.0" prefHeight="495.0" prefWidth="627.0">
         <columns>
-            <TableColumn fx:id="name1" prefWidth="75.0" text="Name" />
-          <TableColumn fx:id="srnumber" prefWidth="59.0" text="Sr.  No." />
-          <TableColumn fx:id="foodname" prefWidth="204.0" text="Food Name" />
-            <TableColumn fx:id="quantity1" prefWidth="66.0" text="Quantity (packets)" />
-            <TableColumn fx:id="add" prefWidth="180.0" text="Address" />
-            <TableColumn fx:id="date1" minWidth="0.0" text="Date" />
+            <TableColumn fx:id="name1" prefWidth="75.0" text="Name" visible="false" />
+          <TableColumn fx:id="foodname" prefWidth="213.0" text="Food Name" />
+            <TableColumn fx:id="quantity1" prefWidth="89.0" text="Quantity (packets)" />
+            <TableColumn fx:id="add" prefWidth="203.0" text="Address" />
+            <TableColumn fx:id="date1" minWidth="0.0" prefWidth="120.0" text="Date" />
         </columns>
       </TableView>
-      <TextField fx:id="quantity" layoutX="729.0" layoutY="401.0" prefHeight="54.0" prefWidth="332.0" />
-      <Label layoutX="729.0" layoutY="469.0" text="Address">
+      <TextField fx:id="quantity" layoutX="729.0" layoutY="368.0" prefHeight="54.0" prefWidth="332.0" />
+      <Label layoutX="729.0" layoutY="436.0" text="Address">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextArea fx:id="address" layoutX="729.0" layoutY="494.0" prefHeight="75.0" prefWidth="332.0" />
-      <DatePicker fx:id="date" layoutX="729.0" layoutY="596.0" prefHeight="38.0" prefWidth="332.0" promptText="Collection Date" />
-      <Label layoutX="729.0" layoutY="103.0" prefHeight="56.0" prefWidth="189.0" text="Welcome">
+      <TextArea fx:id="address" layoutX="729.0" layoutY="461.0" prefHeight="75.0" prefWidth="332.0" />
+      <DatePicker fx:id="date" layoutX="729.0" layoutY="563.0" prefHeight="38.0" prefWidth="332.0" promptText="Collection Date" />
+      <Label layoutX="729.0" layoutY="121.0" prefHeight="56.0" prefWidth="189.0" text="Welcome">
          <font>
             <Font size="30.0" />
          </font>
@@ -63,18 +56,17 @@
             <Image url="@A/logout.png" />
          </image>
       </ImageView>
-      <TableView fx:id="historytb" layoutX="45.0" layoutY="88.0" onMouseClicked="#historybt" prefHeight="595.0" prefWidth="819.0" visible="false">
+      <TableView fx:id="historytb" layoutX="52.0" layoutY="88.0" onMouseClicked="#historybt" prefHeight="595.0" prefWidth="748.0">
          <columns>
-            <TableColumn fx:id="hname" prefWidth="126.99996948242188" text="Name" />
-            <TableColumn fx:id="hsrnumber" prefWidth="61.000030517578125" text="Sr.  No." />
-            <TableColumn fx:id="hfoodname" prefWidth="179.0" text="Food Name" />
-            <TableColumn fx:id="hquantity" prefWidth="108.0" text="Quantity (packets)" />
-            <TableColumn fx:id="hadd" prefWidth="151.0" text="Address" />
-            <TableColumn fx:id="hdate" minWidth="0.0" prefWidth="97.0" text="Date" />
-            <TableColumn fx:id="status" minWidth="0.0" prefWidth="97.0" text="Status" />
+            <TableColumn fx:id="hname" prefWidth="126.99996948242188" text="Name" visible="false" />
+            <TableColumn fx:id="hfoodname" prefWidth="199.0" text="Food Name" />
+            <TableColumn fx:id="hquantity" prefWidth="100.0" text="Quantity (packets)" />
+            <TableColumn fx:id="hadd" prefWidth="222.0" text="Address" />
+            <TableColumn fx:id="hdate" minWidth="0.0" prefWidth="108.0" text="Date" />
+            <TableColumn fx:id="status" minWidth="0.0" prefWidth="115.0" text="Status" />
          </columns>
       </TableView>
-      <Label fx:id="name" layoutX="729.0" layoutY="142.0" prefHeight="54.0" prefWidth="332.0">
+      <Label fx:id="name" layoutX="729.0" layoutY="160.0" prefHeight="54.0" prefWidth="332.0">
          <font>
             <Font size="27.0" />
          </font>
