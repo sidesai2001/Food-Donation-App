@@ -108,7 +108,7 @@ public class VolunteerController implements Initializable
                         status.setCellValueFactory(new PropertyValueFactory<Food, String>("status"));
                     }
                 } 
-                catch (HeadlessException | SQLException e) 
+                catch(HeadlessException | SQLException e) 
                 {
                     JOptionPane.showMessageDialog(null, e);
                 }   
