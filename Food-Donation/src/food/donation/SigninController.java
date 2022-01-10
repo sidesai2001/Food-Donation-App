@@ -26,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.swing.JOptionPane;
+import java.math.BigInteger;
 
 public class SigninController implements Initializable 
 {
@@ -88,6 +89,7 @@ public class SigninController implements Initializable
                 if (user.equals("Donor")) 
                 {
                     FoodDonation.setUsername(rs.getString("S_name"));
+                    FoodDonation.setPhone(rs.getLong("S_phone"));
                     root = FXMLLoader.load(getClass().getResource("donar.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
@@ -97,6 +99,7 @@ public class SigninController implements Initializable
                 else 
                 {
                     FoodDonation.setUsername(rs.getString("S_name"));
+                    FoodDonation.setPhone(rs.getLong("S_phone"));
                     root = FXMLLoader.load(getClass().getResource("volunteer.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
