@@ -2,7 +2,6 @@ package food.donation;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import java.awt.SplashScreen;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -16,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -26,7 +24,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javax.swing.JOptionPane;
-import java.math.BigInteger;
 
 public class SigninController implements Initializable 
 {
@@ -89,7 +86,6 @@ public class SigninController implements Initializable
                 if (user.equals("Donor")) 
                 {
                     FoodDonation.setUsername(rs.getString("S_name"));
-                    FoodDonation.setPhone(rs.getLong("S_phone"));
                     root = FXMLLoader.load(getClass().getResource("donar.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
@@ -99,7 +95,6 @@ public class SigninController implements Initializable
                 else 
                 {
                     FoodDonation.setUsername(rs.getString("S_name"));
-                    FoodDonation.setPhone(rs.getLong("S_phone"));
                     root = FXMLLoader.load(getClass().getResource("volunteer.fxml"));
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
