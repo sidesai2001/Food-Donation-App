@@ -177,7 +177,7 @@ public class DonarController implements Initializable
     private void fooddetailsAction(MouseEvent event) throws IOException 
     {
         conn = (Connection) mysqlconnect.ConnectDb();
-        String sql ="INSERT INTO donor_food (S_name,Food_name,Number_of_packets,address,Collection_date) VALUES (?,?,?,?,?,?)";
+        String sql ="INSERT INTO donor_food (S_name,Food_name,Number_of_packets,address,Collection_date) VALUES (?,?,?,?,?)";
 
         try 
         {
@@ -217,10 +217,10 @@ public class DonarController implements Initializable
         {
             pst = (PreparedStatement) conn.prepareStatement(sql);
             pst.setString(1, f.getName());
-            pst.setString(3, f.getFoodname());
-            pst.setString(4, f.getQuantity());
-            pst.setString(5, f.getAddress());
-            pst.setString(6, f.getDate());
+            pst.setString(2, f.getFoodname());
+            pst.setString(3, f.getQuantity());
+            pst.setString(4, f.getAddress());
+            pst.setString(5, f.getDate());
             pst.execute();
             tableview.getItems().remove(selectedID);
         } 

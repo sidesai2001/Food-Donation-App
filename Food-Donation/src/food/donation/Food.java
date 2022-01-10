@@ -8,17 +8,15 @@ import javafx.util.StringConverter;
 public class Food 
 {
     private String name;
-    private String srnumber;
     private String foodname;
     private String quantity;
     private String address;
     private String date;
     private String status;
 
-    public Food(String name,String srnumber,String foodname,String quantity,String address,String date,String status) 
+    public Food(String name,String foodname,String quantity,String address,String date,String status) 
     {
         this.name = name;
-        this.srnumber = srnumber;
         this.foodname = foodname;
         this.quantity = quantity;
         this.address = address;
@@ -26,7 +24,7 @@ public class Food
         this.status = status;
     }
 
-    Food(String text,String text0,String text1,String text2,String text3,String toString) 
+    Food(String text,String text1,String text2,String text3,String toString) 
     {
         
     }
@@ -49,16 +47,6 @@ public class Food
     public void setName(String name) 
     {
         this.name = name;
-    }
-
-    public String getSrnumber() 
-    {
-        return srnumber;
-    }
-
-    public void setSrnumber(String srnumber) 
-    {
-        this.srnumber = srnumber;
     }
 
     public String getFoodname() 

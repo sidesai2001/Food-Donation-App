@@ -56,7 +56,7 @@
             <Image url="@A/logout.png" />
          </image>
       </ImageView>
-      <TableView fx:id="historytb" layoutX="52.0" layoutY="88.0" onMouseClicked="#historybt" prefHeight="595.0" prefWidth="748.0">
+      <TableView fx:id="historytb" layoutX="91.0" layoutY="88.0" onMouseClicked="#historybt" prefHeight="595.0" prefWidth="743.0" visible="false">
          <columns>
             <TableColumn fx:id="hname" prefWidth="126.99996948242188" text="Name" visible="false" />
             <TableColumn fx:id="hfoodname" prefWidth="199.0" text="Food Name" />
